@@ -28,17 +28,17 @@ module.exports = function closing(pres) {
       s,
       pres,
       [
-        { head: "일곱 자기선언", body: "떡 · 빛 · 문 · 목자\n부활생명 · 길진리생명 · 포도나무" },
+        { head: "일곱 자기선언", body: "떡 빛 문 목자\n부활생명\n길진리생명\n포도나무" },
         { head: "성령의 복음서", body: "하나님은 영이시다\n배에서 생수의 강이 흘러나리라" },
         { head: "영광의 복음서", body: "‘영광’이라는 표현이 많다\n대표적으로 1:14과 17장" },
         { head: "사랑의 복음서", body: "“내가 너희를 사랑한 것 같이\n너희도 서로 사랑하라”" },
-        { head: "일곱 표적", body: "가 왕 베 오 물 실 나" },
-        { head: "유대 중심 사역", body: "명절마다 예루살렘으로\n올라가심 (공관복음은\n갈릴리 중심)" },
+        { head: "일곱 표적", body: "가왕베\n오물실나" },
+        { head: "유대 중심 사역", body: "명절마다\n예루살렘으로\n올라가심" },
       ],
-      { y: 4.24, h: 1.8, cols: 6, headSize: 13.5, bodySize: 12, pad: 0.18 }
+      { y: 4.2, h: 1.72, cols: 6, headSize: 13.5, bodySize: 12, pad: 0.18 }
     );
     keyline(s, pres, {
-      y: 6.16, h: 0.56,
+      y: 6.12, h: 0.56,
       text: "4. 구조  ·  신학적 서론(~1:18) → 유대·예루살렘 사역(1:19~12) → 다락방 강화(13~17) → 수난과 부활(18~20) → 갈릴리 현현(21)",
       fontSize: 13,
     });
@@ -57,10 +57,10 @@ module.exports = function closing(pres) {
         { tag: "3", head: "요한복음 통독", body: "한 주에 21장 일독\n한 번에 쭉 읽어 보기", foot: "권장" },
         { tag: "4", head: "성구 암송", body: "요한복음 1:12\n요한복음 20:31", foot: "권장" },
       ],
-      { y: 1.72, h: 2.7, cols: 4, headSize: 18, bodySize: 14, footSize: 12 }
+      { y: 1.7, h: 3.0, cols: 4, headSize: 18, bodySize: 14, footSize: 12 }
     );
     scripture(s, pres, {
-      x: M, y: 4.66, w: 11.8, h: 1.7, dark: false, fontSize: 19,
+      x: M, y: 5.0, w: 11.8, h: 1.2, dark: false, fontSize: 21,
       text: "영접하는 자 곧 그 이름을 믿는 자들에게는 하나님의 자녀가 되는 권세를 주셨으니",
       ref: "요한복음 1:12 — 이번 주 암송 구절",
     });
@@ -106,10 +106,10 @@ module.exports = function closing(pres) {
       ["제10시", "안드레의 부르심(요 1:39)"],
       ["밤 사경", "예수님이 바다 위를 걸으심(요 6, 마 14)"],
     ];
-    const render = (items, x, w) => {
+    const render = (items, x, w, h0) => {
       let y = 1.68;
       items.forEach((it, i) => {
-        const h = it[1].includes("\n") ? 1.0 : 0.74;
+        const h = it[1].includes("\n") ? 1.0 : h0;
         panel(s, pres, { x, y, w, h, fill: C.background2, shadow: false, name: `ap-${x}-${i}` });
         s.addText(it[0], {
           x: x + 0.2, y: y + 0.08, w: w - 0.4, h: 0.3, margin: 0, isTextBox: true,
@@ -122,10 +122,10 @@ module.exports = function closing(pres) {
         y += h + 0.14;
       });
     };
-    render(left, M, 6.1);
-    render(right, M + 6.33, 6.1);
+    render(left, M, 6.1, 0.78);
+    render(right, M + 6.33, 6.1, 0.66);
     s.addText("※ 시간은 유대식 시간 — 제6시는 정오, 제9시는 오후 3시입니다.", {
-      x: M + 6.33, y: 6.3, w: 6.1, h: 0.36, margin: 0, isTextBox: true,
+      x: M, y: 5.68, w: 6.1, h: 0.36, margin: 0, isTextBox: true,
       fontSize: 12, color: C.accent3, objectName: "note",
     });
   }

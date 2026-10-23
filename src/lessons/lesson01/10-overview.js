@@ -114,13 +114,13 @@ module.exports = function overview(pres) {
       pres,
       [
         { tag: "영광", head: "영광의 복음서", body: "하나님의 영광이 특별히 계시된다.\n1:14과 17장이 대표적.", foot: "‘영광’ 최소 36회" },
-        { tag: "영", head: "영적 · 성령의 복음서", body: "성령님을 ‘보혜사’로 계시한다.\n3장·4장·6장·14~16장·20장.", foot: "‘보혜사’ 4회" },
+        { tag: "영", head: "성령의 복음서", body: "성령님을 ‘보혜사’로 계시한다.\n3 · 4 · 6 · 14~16 · 20장", foot: "‘보혜사’ 4회" },
         { tag: "믿음", head: "신앙의 복음서", body: "살아 있는, 행동하는 믿음.\n믿음 = 영접 = 순종.", foot: "‘믿음’ 최소 98회" },
         { tag: "사랑", head: "사랑의 복음서", body: "하나님이 보여주신 사랑,\n서로 사랑하라는 새 계명(13장).", foot: "‘사랑’ 최소 51회" },
       ],
-      { y: 1.72, h: 2.95, cols: 4, headSize: 17, bodySize: 14, badgeD: 0.52 }
+      { y: 1.7, h: 3.15, cols: 4, headSize: 17, bodySize: 14, badgeD: 0.52 }
     );
-    subhead(s, pres, { y: 4.96, tag: "왜", text: "왜 ‘독수리 복음’이라 부르는가" });
+    subhead(s, pres, { y: 5.1, tag: "왜", text: "왜 ‘독수리 복음’이라 부르는가" });
     bullets(
       s,
       pres,
@@ -129,7 +129,7 @@ module.exports = function overview(pres) {
         "예수님의 신성을 강조하기 때문 — 하늘에서 오심, 하나님의 아들 되심",
         "요한계시록 4장의 네 생물 중, 하늘에서 오신 예수님의 신성을 독수리로 표현하기 때문",
       ],
-      { y: 5.52, h: 1.1, fontSize: 15, space: 5 }
+      { y: 5.6, h: 1.08, fontSize: 15, space: 5 }
     );
   }
 
@@ -228,7 +228,7 @@ module.exports = function overview(pres) {
   // ── 완전수 7 ① 일곱 표적
   {
     const s = S("CONTENT");
-    s.addText("완전수 7 ① 일곱 표적 — 가 · 왕 · 베 · 오 · 물 · 실 · 나", { placeholder: "title" });
+    s.addText("완전수 7 ① 일곱 표적", { placeholder: "title" });
     cardGrid(
       s,
       pres,
@@ -240,60 +240,47 @@ module.exports = function overview(pres) {
         { tag: "물", head: "물 위를 걸으심", body: "밤 사경에\n6:19~21" },
         { tag: "실", head: "실로암 맹인", body: "날 때부터 소경\n9:1~7" },
         { tag: "나", head: "나사로를 살리심", body: "표적 중의 표적\n11:1~44" },
+        { tag: "+", head: "153마리 고기", body: "여덟 번째 표적으로 보기도\n21:1~14" },
       ],
-      { y: 1.72, h: 2.3, cols: 7, headSize: 14, bodySize: 12, badgeD: 0.42, pad: 0.16 }
+      { y: 1.66, h: 3.95, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
     );
-    keyline(s, pres, { y: 4.26, h: 0.72, text: "표적(σημεῖον)은 기적 자체가 아니라, 예수님이 누구신지를 가리키는 ‘표지판’입니다", fontSize: 17 });
-    bullets(
-      s,
-      pres,
-      [
-        { text: "나사로를 살리신 사건(11장)은 가장 큰 표적이자, 예수님의 부활을 강력히 예표하는 표적 중의 표적", bold: true },
-        "21장의 153마리 고기 사건을 더해 여덟 번째 표적으로 보기도 한다",
-        "표적은 늘 ‘자기선언’과 짝을 이룬다 — 오병이어 뒤에 “나는 생명의 떡이다”, 실로암 뒤에 “나는 세상의 빛이다”",
-      ],
-      { y: 5.14, h: 1.5, fontSize: 15, space: 7 }
-    );
+    keyline(s, pres, {
+      y: 5.76, h: 1.06,
+      text: "표적(σημεῖον)은 기적 자체가 아니라, 예수님이 누구신지를 가리키는 ‘표지판’입니다.\n표적은 늘 자기선언과 짝을 이룬다 — 오병이어 뒤에 “나는 생명의 떡이다”, 실로암 뒤에 “나는 세상의 빛이다”",
+      fontSize: 16,
+    });
   }
 
   // ── 완전수 7 ② 일곱 자기선언
   {
     const s = S("CONTENT");
-    s.addText("완전수 7 ② 일곱 자기선언 — 에고 에이미 (ἐγώ εἰμι)", { placeholder: "title" });
+    s.addText("완전수 7 ② 일곱 자기선언 (에고 에이미)", { placeholder: "title" });
     cardGrid(
       s,
       pres,
       [
-        { tag: "생", head: "나는 생명의 떡이다", body: "6:35", foot: "살기 위해 꼭 필요한 양식" },
-        { tag: "세", head: "나는 세상의 빛이다", body: "8:12 / 9:5", foot: "어둠을 보게 하는 빛" },
-        { tag: "양", head: "나는 양의 문이다", body: "10:7", foot: "들어가는 유일한 길" },
-        { tag: "선", head: "나는 선한 목자다", body: "10:11", foot: "목숨을 버리는 목자" },
-        { tag: "부", head: "나는 부활이요 생명이다", body: "11:25", foot: "죽음 너머의 생명" },
-        { tag: "길", head: "나는 길 · 진리 · 생명이다", body: "14:6", foot: "아버지께 이르는 유일한 길" },
-        { tag: "참", head: "나는 참 포도나무다", body: "15:1", foot: "붙어 있어야 열매 맺는다" },
+        { tag: "생", head: "생명의 떡", body: "6:35\n살기 위해 꼭 필요한 양식" },
+        { tag: "세", head: "세상의 빛", body: "8:12 · 9:5\n어둠 속을 보게 하는 빛" },
+        { tag: "양", head: "양의 문", body: "10:7\n들어가는 유일한 문" },
+        { tag: "선", head: "선한 목자", body: "10:11\n목숨을 버리는 목자" },
+        { tag: "부", head: "부활이요 생명", body: "11:25\n죽음 너머의 생명" },
+        { tag: "길", head: "길 · 진리 · 생명", body: "14:6\n아버지께 이르는 유일한 길" },
+        { tag: "참", head: "참 포도나무", body: "15:1\n붙어 있어야 열매 맺는다" },
+        { tag: "!", head: "에고 에이미", body: "출 3:14와 같은 표현\n→ 곧 신성 선언" },
       ],
-      { y: 1.72, h: 2.5, cols: 7, headSize: 13.5, bodySize: 13, footSize: 11, badgeD: 0.42, pad: 0.16 }
+      { y: 1.66, h: 3.95, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
     );
     keyline(s, pres, {
-      y: 4.44, h: 0.98,
-      text: "떡 · 빛 · 문 · 목자 · 부활 · 길 · 포도나무 — 어린아이도 아는 사물로 자신을 완벽하게 증거하셨습니다.\n“나는 ~이다”는 영원한 생명에 대한 인간의 질문에 주시는 답입니다.",
-      fontSize: 15,
+      y: 5.76, h: 1.06,
+      text: "떡 · 빛 · 문 · 목자 · 부활 · 길 · 포도나무 — 어린아이도 아는 사물로 자신을 완벽하게 증거하셨습니다.\n“나는 ~이다”는 곧 신성 선언입니다. 유대인들이 돌을 들었던 이유도 여기에 있습니다 (8:58~59, 10:30~33).",
+      fontSize: 16,
     });
-    bullets(
-      s,
-      pres,
-      [
-        { text: "‘에고 에이미’는 출애굽기 3:14의 “나는 스스로 있는 자니라”와 같은 표현 — 곧 신성 선언입니다.", bold: true },
-        "유대인들이 돌을 들었던 이유도 여기에 있다 (8:58~59, 10:30~33)",
-      ],
-      { y: 5.6, h: 1.0, fontSize: 15, space: 7 }
-    );
   }
 
   // ── 완전수 7 ③ 일곱 증인
   {
     const s = S("CONTENT");
-    s.addText("완전수 7 ③ 일곱 증인 — 예수님을 무엇이라 불렀는가", { placeholder: "title" });
+    s.addText("완전수 7 ③ 일곱 증인", { placeholder: "title" });
     const rows = [
       headRow(pres, ["증인", "본문", "고백", "자리"]),
       ["세례 요한", "1:29~34", "하나님의 어린양 · 하나님의 아들 · 성령으로 세례 주시는 분", "선구자"],
@@ -317,9 +304,9 @@ module.exports = function overview(pres) {
             },
           }))
     );
-    s.addTable(body, { ...tableOpts(pres, { colW: [2.2, 1.5, 6.2, 1.93], y: 1.66, rowH: 0.52, fontSize: 13.5 }) });
+    s.addTable(body, { ...tableOpts(pres, { colW: [2.2, 1.5, 6.2, 1.93], y: 1.62, rowH: 0.5, fontSize: 13.5 }) });
     keyline(s, pres, {
-      y: 5.56, h: 0.9,
+      y: 5.9, h: 0.8,
       text: "유대 지도자 · 사마리아 여인 · 이방 주민 · 의심한 제자 — 모든 종류의 사람이 같은 결론에 도달합니다",
       fontSize: 17,
     });
@@ -330,7 +317,7 @@ module.exports = function overview(pres) {
     const s = S("CONTENT");
     s.addText("완전수 7 ④ 일곱 전도자 · 일곱 비사", { placeholder: "title" });
     compare(s, pres, {
-      y: 1.68, h: 4.3,
+      y: 1.66, h: 4.62,
       left: {
         head: "일곱 전도자 (21장)",
         fontSize: 14,
@@ -338,6 +325,8 @@ module.exports = function overview(pres) {
           { text: "요한복음의 마지막 장면은 승천이 아니다", sub: "디베랴 바닷가에서 일곱 제자와의 대화, 그리고 153마리" },
           "베드로 · 야고보 · 요한 · 도마 · 나다나엘 · 또 다른 두 제자 = 완전한 전도대",
           { text: "바다는 세상, 고기는 사람", sub: "“사람을 낚고 세우는 어부가 되라”는 강력한 메시지로 복음서를 닫는다" },
+          { text: "153마리 — 그물이 찢어지지 아니하였더라", sub: "교회는 모든 민족을 담고도 찢어지지 않는다는 상징으로 읽는다" },
+          { text: "숯불 조반, 그리고 세 번의 질문", sub: "세 번 부인한 베드로를 세 번 물어 회복시키신다 (21:15~17)" },
         ],
       },
       right: {
@@ -355,7 +344,7 @@ module.exports = function overview(pres) {
       },
     });
     s.addText("※ 비사(秘辭) : 우리가 익히 아는 내용을 차용해 하나님 나라의 영적 비밀을 전달하는 어법", {
-      x: M, y: 6.14, w: LAYOUT.CONTENT_W, h: 0.4, margin: 0, isTextBox: true,
+      x: M, y: 6.42, w: LAYOUT.CONTENT_W, h: 0.4, margin: 0, isTextBox: true,
       fontSize: 13, color: C.accent3, objectName: "note",
     });
   }
@@ -363,7 +352,7 @@ module.exports = function overview(pres) {
   // ── 21장 한 장씩 (1~11장)
   {
     const s = S("CONTENT");
-    s.addText("21장 한 장씩 훑기 (1~11장)", { placeholder: "title" });
+    s.addText("21장 한눈에 보기 (1~11장)", { placeholder: "title" });
     const left = [
       ["1장", "말씀이신 예수, 하나님의 자녀 되는 권세, 성육신, 세례요한, 제자를 부르심"],
       ["2장", "물로 포도주를 만드심 (가나) · 성전 청결"],
@@ -401,7 +390,7 @@ module.exports = function overview(pres) {
   // ── 21장 한 장씩 (12~21장)
   {
     const s = S("CONTENT");
-    s.addText("21장 한 장씩 훑기 (12~21장)", { placeholder: "title" });
+    s.addText("21장 한눈에 보기 (12~21장)", { placeholder: "title" });
     const left = [
       ["12장", "향유 부은 여인 · 예루살렘 입성 · 인자의 들림 · 심판 예언"],
       ["13장", "세족식 · 유다와 베드로 · 다락방 강화 시작 · 새 계명"],
@@ -417,23 +406,23 @@ module.exports = function overview(pres) {
       ["21장", "디베랴 호수 · 153마리 · 숯불 조반 · “네가 나를 사랑하느냐” · 저자 밝힘"],
     ];
     const render = (items, x) => {
-      let y = 1.74;
+      let y = 1.68;
       items.forEach((it, i) => {
-        panel(s, pres, { x, y, w: 6.1, h: 0.86, fill: C.background2, shadow: false, name: `ch2-${x}-${i}` });
+        panel(s, pres, { x, y, w: 6.1, h: 0.82, fill: C.background2, shadow: false, name: `ch2-${x}-${i}` });
         s.addText(it[0], {
-          x: x + 0.2, y, w: 0.9, h: 0.86, margin: 0, isTextBox: true,
+          x: x + 0.2, y, w: 0.9, h: 0.82, margin: 0, isTextBox: true,
           fontSize: 16, bold: true, color: C.accent1, valign: "middle", objectName: `ch2-${x}-${i}-n`,
         });
         s.addText(it[1], {
-          x: x + 1.13, y, w: 4.8, h: 0.86, margin: 0, isTextBox: true,
+          x: x + 1.13, y, w: 4.8, h: 0.82, margin: 0, isTextBox: true,
           fontSize: 12.5, color: C.text1, valign: "middle", lineSpacingMultiple: 1.12, objectName: `ch2-${x}-${i}-t`,
         });
-        y += 0.96;
+        y += 0.9;
       });
     };
     render(left, M);
     render(right, M + 6.33);
-    keyline(s, pres, { y: 6.08, h: 0.6, text: "13~17장(다락방 강화) 다섯 장이 ‘2~3시간’을 다룹니다 — 요한이 가장 공들인 대목", fontSize: 15 });
+    keyline(s, pres, { y: 6.24, h: 0.58, text: "13~17장(다락방 강화) 다섯 장이 ‘2~3시간’을 다룹니다 — 요한이 가장 공들인 대목", fontSize: 15 });
   }
 
   // ── 요한 특수자료

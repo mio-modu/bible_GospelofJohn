@@ -26,7 +26,7 @@ module.exports = function part1(pres) {
       y: 1.62, h: 5.1,
       left: {
         head: "1. 예수님에 대한 증언인 요한복음",
-        fontSize: 15,
+        fontSize: 14,
         items: [
           { text: "가. 사도 요한", sub: "이 복음서의 저자는 누구인가 (질문 1~5)" },
           { text: "나. 요한과 예수님의 만남", sub: "포기하고 따름 (질문 6~8)" },
@@ -38,12 +38,13 @@ module.exports = function part1(pres) {
       },
       right: {
         head: "2. 하나님에 대한 증언이신 예수님 (1:1~18)",
-        fontSize: 15,
+        fontSize: 14,
         items: [
           { text: "가. 창조주이신 예수님 (1:1~3)", sub: "예수님은 말씀 · 말씀으로 창조 (질문 22~28)" },
           { text: "나. 인도자이신 예수님 (1:4~13)", sub: "빛이 어둠에 비침 (질문 29~35)" },
           { text: "다. 하나님이신 예수님 (1:14~18)", sub: "성육신 · 은혜 · 삼위일체 하나님 (질문 36~41)" },
           { text: "오늘의 흐름", sub: "저자 요한을 알고 → 그가 증언한 예수님을 만난다" },
+          { text: "핵심 질문", sub: "“예수님은 누구신가” — 1과는 이 한 질문에 답한다" },
         ],
       },
     });
@@ -59,7 +60,7 @@ module.exports = function part1(pres) {
       fontSize: 14, bold: true, align: "right", valign: "middle", color: C.accent1, objectName: "qtag",
     });
     scripture(s, pres, {
-      x: M, y: 1.68, w: 6.5, h: 2.5, dark: false, fontSize: 18,
+      x: M, y: 1.68, w: 6.5, h: 1.9, dark: false, fontSize: 18,
       text: "이 일을 증언하고 이것을 기록한 제자가 이 사람이라 우리는 그의 증언이 참된 줄 아노라",
       ref: "요한복음 21:24  ·  cf. 21:20 “예수께서 사랑하시던 그 제자”",
     });
@@ -111,11 +112,11 @@ module.exports = function part1(pres) {
             },
           }))
     );
-    s.addTable(body, { ...tableOpts(pres, { colW: [3.2, 4.3, 4.33], y: 1.66, rowH: 0.5, fontSize: 14 }) });
+    s.addTable(body, { ...tableOpts(pres, { colW: [3.2, 4.3, 4.33], y: 1.62, rowH: 0.48, fontSize: 14 }) });
     keyline(s, pres, {
-      y: 4.58, h: 0.78,
-      text: "남는 제자  ·  야고보(요한의 형제) · 요한 · 바돌로매 · 마태 · 야고보(알패오의 아들) · 시몬(셀롯) — 6명",
-      fontSize: 16,
+      y: 4.72, h: 0.72,
+      text: "남는 제자 6명  ·  야고보 · 요한 · 바돌로매 · 마태 · 야고보(알패오) · 시몬(셀롯)",
+      fontSize: 17,
     });
     bullets(
       s,
@@ -124,7 +125,7 @@ module.exports = function part1(pres) {
         { text: "저자가 스스로를 ‘예수께서 사랑하시는 제자’라 표현하므로, 본문에 이름이 등장하는 제자는 저자가 될 수 없다.", bold: true },
         "요한복음은 유독 열두 제자의 명단 전체를 소개하지 않는다 — 부르심·파송 이야기도 없다.",
       ],
-      { y: 5.56, h: 1.0, fontSize: 15, space: 8 }
+      { y: 5.66, h: 1.05, fontSize: 15, space: 8 }
     );
   }
 
@@ -144,10 +145,10 @@ module.exports = function part1(pres) {
         { tag: "✕", head: "야고보", body: "일찍이 순교했다 (행 12:2, AD 44년경)\n1세기 말~2세기 초 기록과 맞지 않는다", foot: "제외" },
         { tag: "○", head: "요한", body: "이름이 밝혀지지 않았고, 생존했으며,\n예수님의 사역 전체를 가장 가까이서 목격한 제자", foot: "결론" },
       ],
-      { y: 2.16, h: 3.0, cols: 3, headSize: 26, bodySize: 14, badgeD: 0.5 }
+      { y: 2.12, h: 3.2, cols: 3, headSize: 26, bodySize: 14, badgeD: 0.5 }
     );
     keyline(s, pres, {
-      y: 5.3, h: 1.0,
+      y: 5.46, h: 0.95,
       text: "이 복음서는 ‘가장 가까이에서 예수님을 보고 경험한 한 제자의 진실된 기록’입니다.\n저자를 알고 읽으면, 문장마다 목격자의 떨림이 들립니다.",
       fontSize: 16,
     });
@@ -163,16 +164,16 @@ module.exports = function part1(pres) {
       [
         { tag: "가족", head: "어부의 아들", body: "아버지는 어부 세베대\n어머니는 살로메 — 예수님의 이모 (요 19:25)" },
         { tag: "형제", head: "야고보의 동생", body: "형 야고보와 함께 부르심을 받았고\n함께 ‘우레의 아들’이라 불렸다" },
-        { tag: "출발", head: "원래 세례요한의 제자", body: "요 1:35~40 · 세례요한의 증언을 듣고\n예수님을 따라갔다 (오후 10시의 만남)" },
+        { tag: "출발", head: "원래 세례요한의 제자", body: "요 1:35~40\n세례요한의 증언을 듣고 따라갔다" },
         { tag: "맡음", head: "마리아를 친어머니처럼 모심", body: "요 19:26~27\n십자가 아래 어머니를 맡기신 제자" },
         { tag: "교회", head: "예루살렘 교회의 기둥", body: "갈 2:9\n베드로와 함께 초대교회를 돌보았다" },
-        { tag: "기록", head: "신약 다섯 권의 저자", body: "요한복음 · 요한1·2·3서 · 요한계시록\n밧모섬 유배 중 계시를 받아 기록했다" },
+        { tag: "기록", head: "신약 다섯 권의 저자", body: "요한복음 · 요한1·2·3서 · 요한계시록\n밧모섬 유배 중 계시를 받아 기록" },
       ],
-      { y: 1.72, h: 4.6, cols: 3, headSize: 17, bodySize: 13.5 }
+      { y: 1.7, h: 4.6, cols: 3, headSize: 17, bodySize: 13.5 }
     );
-    s.addText("※ 요한복음을 읽는다는 것은, 예수님의 이모의 아들이자 십자가 아래 끝까지 서 있던 제자의 증언을 듣는 일입니다.", {
-      x: M, y: 6.44, w: LAYOUT.CONTENT_W, h: 0.4, margin: 0, isTextBox: true,
-      fontSize: 13, color: C.accent3, objectName: "note",
+    s.addText("요한복음을 읽는다는 것은, 예수님의 이모의 아들이자 십자가 아래 끝까지 서 있던 제자의 증언을 듣는 일입니다.", {
+      x: M, y: 6.46, w: LAYOUT.CONTENT_W, h: 0.38, margin: 0, isTextBox: true,
+      fontSize: 13.5, bold: true, color: C.accent5, objectName: "note",
     });
   }
 
@@ -202,7 +203,7 @@ module.exports = function part1(pres) {
         { tag: "7", head: "즉각 응답한 가장 큰 이유", body: "말씀에 순종해 그물을 내렸을 때\n엄청나게 많은 고기가 잡힌\n예수님의 능력을 직접 경험했기 때문" },
         { tag: "8", head: "포기한 것", body: "배를 포함한 생업 전부\n— 요한에게 그것은 삶의 근간이었다" },
       ],
-      { y: 3.9, h: 2.3, cols: 3, headSize: 16, bodySize: 13.5, badgeD: 0.4 }
+      { y: 3.86, h: 2.44, cols: 3, headSize: 16, bodySize: 13.5, badgeD: 0.4 }
     );
   }
 
@@ -388,10 +389,10 @@ module.exports = function part1(pres) {
         { head: "부활하신 예수님", body: "부활하신 예수님을 만나고\n알아본 제자\n(20:19~20, 21:7)" },
         { head: "승천", body: "승천을 목격한 제자\n(행 1:9~13)" },
       ],
-      { y: 4.34, h: 1.75, cols: 4, headSize: 17, bodySize: 13.5 }
+      { y: 4.26, h: 1.9, cols: 4, headSize: 17, bodySize: 13.5 }
     );
     keyline(s, pres, {
-      y: 6.2, h: 0.6,
+      y: 6.26, h: 0.56,
       text: "요한은 예수님의 사역 초창기부터 함께하며 가장 많이 목격하고, 가장 가까이에서 섬긴 제자입니다",
       fontSize: 16,
     });
@@ -414,9 +415,9 @@ module.exports = function part1(pres) {
         { tag: "15", head: "심문자들 앞에서", body: "담대히 말함\n학문 없는 범인으로 알았는데", foot: "행 4:13" },
         { tag: "16", head: "금지 명령에 대한 대답", body: "“하나님 앞에서 너희의 말을 듣는 것이\n하나님의 말씀을 듣는 것보다 옳은가 판단하라”", foot: "행 4:19~20" },
       ],
-      { y: 1.72, h: 2.7, cols: 4, headSize: 16, bodySize: 13, footSize: 12 }
+      { y: 1.7, h: 3.0, cols: 4, headSize: 16, bodySize: 13, footSize: 12 }
     );
-    subhead(s, pres, { y: 4.62, tag: "17", text: "이 모든 일이 그들이 목격한 것에 대해 무엇을 말해 주는가" });
+    subhead(s, pres, { y: 4.88, tag: "17", text: "이 모든 일이 그들이 목격한 것에 대해 무엇을 말해 주는가" });
     bullets(
       s,
       pres,
@@ -424,7 +425,7 @@ module.exports = function part1(pres) {
         { text: "그 증언이 ‘진실’이라는 것", sub: "요한은 자신이 목격한 것을 전했고 기록했으며, 그것 때문에 해받는 것을 기꺼이 감수했다" },
         { text: "거짓을 위해 목숨을 걸 사람은 없다", sub: "핍박을 감수한 증언은, 그가 전하고 기록한 것이 진실임을 보여주는 객관적인 증거다" },
       ],
-      { y: 5.2, h: 1.45, fontSize: 16, space: 10 }
+      { y: 5.44, h: 1.4, fontSize: 15, space: 9 }
     );
   }
 
@@ -468,14 +469,14 @@ module.exports = function part1(pres) {
       s,
       pres,
       [
-        { tag: "19", head: "하나님의 아들이란?", body: "하나님과 동일한 본성을 지니셨다는 뜻\n피조물이 아니라 하나님 자신이시다" },
-        { tag: "20", head: "그리스도란?", body: "‘기름부음을 받은 자’ (메시야)\n왕 · 제사장 · 선지자로 세우심을 받은 분" },
-        { tag: "21", head: "그리스도로 믿는다는 것은?", body: "그분을 하나님의 아들로 믿는 것\n→ 죄 사함 · 구원 · 하나님의 자녀가 됨" },
+        { tag: "19", head: "하나님의 아들이란?", body: "하나님과 동일한 본성을 지니심\n피조물이 아니라 하나님 자신" },
+        { tag: "20", head: "그리스도란?", body: "‘기름부음을 받은 자’ (메시야)\n왕 · 제사장 · 선지자로 세우신 분" },
+        { tag: "21", head: "그리스도로 믿는다는 것은?", body: "그분을 하나님의 아들로 믿는 것\n→ 죄 사함 · 구원 · 하나님의 자녀" },
       ],
-      { y: 4.22, h: 2.2, cols: 3, headSize: 17, bodySize: 14 }
+      { y: 4.18, h: 2.1, cols: 3, headSize: 17, bodySize: 14 }
     );
     s.addText("여기까지가 요한복음을 공부할 준비입니다 — 예수님을 더 잘 알고, 은혜로 얻은 생명의 소중함을 깨닫게 됩니다.", {
-      x: M, y: 6.5, w: LAYOUT.CONTENT_W, h: 0.38, margin: 0, isTextBox: true,
+      x: M, y: 6.4, w: LAYOUT.CONTENT_W, h: 0.38, margin: 0, isTextBox: true,
       fontSize: 14, bold: true, color: C.accent5, objectName: "note",
     });
   }

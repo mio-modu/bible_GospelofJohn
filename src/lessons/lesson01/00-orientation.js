@@ -55,7 +55,7 @@ module.exports = function orientation(pres) {
         { tag: "1", head: "오리엔테이션", body: "8주 과정 안내\n수료 기준\n강의 진행 순서" },
         { tag: "2", head: "소그룹 나눔", body: "자기소개\n요한복음 수강 계기\n조장 선출" },
         { tag: "3", head: "요한복음 분석", body: "저자 · 기록목적\n구조와 완전수 7\n한 장씩 전체 조망" },
-        { tag: "4", head: "제1과 강의", body: "예수님에 대한 증언,\n요한복음 (1장 전반)\n질문 1~21" },
+        { tag: "4", head: "제1과 강의", body: "예수님에 대한 증언,\n요한복음\n질문 1~21" },
         { tag: "5", head: "제1과 강의", body: "하나님에 대한 증언,\n예수님 (1:1~18)\n질문 22~41" },
       ],
       { y: 1.9, h: 2.9, cols: 5, headSize: 16, bodySize: 13 }

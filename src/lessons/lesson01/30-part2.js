@@ -58,12 +58,15 @@ module.exports = function part2(pres) {
       pres,
       [
         { head: "하나님을 알려주시기 때문", body: "우리는 하나님에 대한 개념을\n예수님을 통해서 얻는다.\n예수님은 ‘하나님에 대한 말씀’이다." },
-        { head: "하나님이 먼저 행동하셨기 때문", body: "우리 편에서 하나님을 만나는 것은 불가능하다.\n그래서 하나님께서 먼저 말씀을 주셨다." },
-        { head: "하나님을 떠오르게 하시기 때문", body: "말씀을 들으면 말하는 분이 떠오른다.\n우리는 예수님을 통해\n초월해 계신 하나님을 만난다." },
+        { head: "하나님이 먼저 행동하셨기 때문", body: "우리 편에서 하나님을 만날 수 없다.\n그래서 하나님이 먼저 말씀을 주셨다." },
+        { head: "하나님을 떠오르게 하시기 때문", body: "말씀을 들으면 말하는 분이 떠오른다\n우리는 예수님을 통해\n초월해 계신 하나님을 만난다." },
       ],
-      { y: 4.18, h: 1.9, cols: 3, headSize: 16, bodySize: 13.5 }
+      { y: 4.14, h: 2.12, cols: 3, headSize: 15, bodySize: 13.5 }
     );
-    keyline(s, pres, { y: 6.18, h: 0.6, text: "말씀 = 하나님을 설명하는 가장 정확한 단어. 예수님을 보면 하나님이 보입니다 (14:9)", fontSize: 16 });
+    s.addText("말씀 = 하나님을 설명하는 가장 정확한 단어. 예수님을 보면 하나님이 보입니다 (14:9)", {
+      x: M, y: 6.38, w: LAYOUT.CONTENT_W, h: 0.38, margin: 0, isTextBox: true,
+      fontSize: 15, bold: true, color: C.accent5, objectName: "note",
+    });
   }
 
   // ── 1절 세 마디 분해
@@ -74,9 +77,9 @@ module.exports = function part2(pres) {
       s,
       pres,
       [
-        { tag: "27", head: "태초에 말씀이 계시니라", body: "시간 밖에 계신 분\n→ 예수님은 영원하신 분", foot: "질문 27 · 모습 ①" },
-        { tag: "24", head: "하나님과 함께 계셨으니", body: "두 분은 함께 계셨다\n→ 구분된 인격, 친밀한 관계", foot: "질문 24" },
-        { tag: "25", head: "이 말씀은 곧 하나님이시니라", body: "예수님은 곧 하나님이시다\n→ 동일한 본질", foot: "질문 25" },
+        { tag: "①", head: "태초에 말씀이 계시니라", body: "시간 밖에 계신 분\n→ 예수님은 영원하신 분\n(질문 27)" },
+        { tag: "②", head: "하나님과 함께 계셨으니", body: "두 분은 함께 계셨다\n→ 구분된 인격 · 친밀한 관계\n(질문 24)" },
+        { tag: "③", head: "말씀은 곧 하나님이시니라", body: "예수님은 곧 하나님이시다\n→ 동일한 본질\n(질문 25)" },
       ],
       { y: 1.68, h: 2.3, cols: 3, headSize: 17, bodySize: 14, footSize: 12 }
     );
@@ -200,7 +203,7 @@ module.exports = function part2(pres) {
       fontSize: 14, bold: true, align: "right", valign: "middle", color: C.accent1, objectName: "qtag",
     });
     compare(s, pres, {
-      y: 1.64, h: 2.6,
+      y: 1.62, h: 2.7,
       left: {
         head: "31. 세례 요한의 사역 (6~8절)",
         fontSize: 15,
@@ -218,17 +221,17 @@ module.exports = function part2(pres) {
         ],
       },
     });
-    subhead(s, pres, { y: 4.34, tag: "34", text: "13절 — 하나님의 자녀가 되는 길" });
+    subhead(s, pres, { y: 4.42, tag: "34", text: "13절 — 하나님의 자녀가 되는 길" });
     cardGrid(
       s,
       pres,
       [
-        { tag: "✕", head: "혈통으로 나지 아니하고", body: "모태신앙이어서가 아니다" },
-        { tag: "✕", head: "육정으로 나지 아니하고", body: "사람의 욕구나 노력이 아니다" },
-        { tag: "✕", head: "사람의 뜻으로 나지 않고", body: "누군가의 결정으로 되지 않는다" },
-        { tag: "○", head: "오직 하나님께로 난 자들", body: "하나님이 낳으셔야 한다", foot: "35. 자녀 됨의 근원은 예수님" },
+        { tag: "✕", head: "혈통이 아니라", body: "모태신앙이어서가 아니다" },
+        { tag: "✕", head: "육정이 아니라", body: "사람의 욕구나 노력이 아니다" },
+        { tag: "✕", head: "사람의 뜻이 아니라", body: "누군가의 결정으로 되지 않는다" },
+        { tag: "○", head: "오직 하나님께로 난 자", body: "하나님이 낳으셔야 한다", foot: "근원은 예수님 (35)" },
       ],
-      { y: 4.8, h: 1.85, cols: 4, headSize: 15, bodySize: 13, footSize: 11.5, badgeD: 0.4, pad: 0.2 }
+      { y: 4.88, h: 1.85, cols: 4, headSize: 15, bodySize: 13, footSize: 11.5, badgeD: 0.4, pad: 0.2 }
     );
   }
 

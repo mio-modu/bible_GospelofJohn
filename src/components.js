@@ -16,7 +16,7 @@ const CJK = /[\u1100-\u11FF\u3000-\u30FF\u3130-\u318F\u4E00-\u9FFF\uAC00-\uD7AF\
 function lineWidth(text, fontSize) {
   let w = 0;
   for (const ch of text) w += (CJK.test(ch) ? 1.0 : ch === " " ? 0.3 : 0.54) * (fontSize / 72);
-  return w;
+  return w * 1.08; // 안전 계수 - 추정이 빠듯하면 실제로는 한 줄이 더 접힌다
 }
 
 function textHeight(text, wIn, fontSize, lineSpacing = 1.3) {
@@ -41,16 +41,20 @@ function flushWarnings() {
 /** 금색 원형 배지 - 덱 전체를 묶는 시각 모티프 */
 function badge(slide, pres, { x, y, d = 0.46, text = "", fill, color, fontSize, name }) {
   const C = pres.SchemeColor;
-  slide.addShape(pres.ShapeType.ellipse, {
-    x, y, w: d, h: d,
+  const fs = fontSize || Math.round(d * 30);
+  // 글자가 원보다 넓으면 알약 모양으로 늘려 잘리지 않게 한다
+  const w = Math.max(d, lineWidth(String(text), fs) + 0.2);
+  slide.addShape(w > d + 0.01 ? pres.ShapeType.roundRect : pres.ShapeType.ellipse, {
+    x, y, w, h: d,
+    rectRadius: w > d + 0.01 ? d / 2 : undefined,
     fill: { color: fill || C.accent1 },
     line: { type: "none" },
     objectName: name ? `${name}-badge` : undefined,
   });
   slide.addText(String(text), {
-    x, y, w: d, h: d, margin: 0, isTextBox: true,
+    x, y, w, h: d, margin: 0, isTextBox: true,
     align: "center", valign: "middle", bold: true,
-    fontSize: fontSize || Math.round(d * 30),
+    fontSize: fs,
     color: color || C.background1,
     objectName: name ? `${name}-badge-text` : undefined,
   });
@@ -91,7 +95,7 @@ function cardGrid(slide, pres, items, opts = {}) {
     const cy = y + Math.floor(i / cols) * (ch + gap);
     panel(slide, pres, { x: cx, y: cy, w: cw, h: ch, fill: fill || (dark ? C.accent2 : C.background2), name: `${name}-${i}` });
 
-    const footH = it.foot ? textHeight(it.foot, inner, footSize, 1.25) + 0.08 : 0;
+    const footH = it.foot ? textHeight(it.foot, inner, footSize, 1.25) + 0.16 : 0;
     let ty = cy + pad;
     if (it.tag !== undefined) {
       badge(slide, pres, { x: cx + pad, y: ty, d: badgeD, text: it.tag, name: `${name}-${i}` });
@@ -228,12 +232,14 @@ function compare(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h, g
     const cx = x + i * (cw + gap);
     const isDark = i === 1;
     panel(slide, pres, { x: cx, y, w: cw, h, fill: isDark ? C.text2 : C.background2, name: `${name}-${i}` });
+    const headH = Math.max(0.46, textHeight(side.head, cw - 0.6, 20, 1.24));
     slide.addText(side.head, {
-      x: cx + 0.3, y: y + 0.26, w: cw - 0.6, h: 0.46, margin: 0, isTextBox: true,
-      fontSize: 20, bold: true, color: isDark ? C.accent1 : C.text1, objectName: `${name}-${i}-head`,
+      x: cx + 0.3, y: y + 0.26, w: cw - 0.6, h: headH, margin: 0, isTextBox: true,
+      fontSize: 20, bold: true, color: isDark ? C.accent1 : C.text1, valign: "top",
+      objectName: `${name}-${i}-head`,
     });
     bullets(slide, pres, side.items, {
-      x: cx + 0.3, y: y + 0.86, w: cw - 0.6, h: h - 1.14,
+      x: cx + 0.3, y: y + 0.3 + headH + 0.14, w: cw - 0.6, h: h - (0.44 + headH + 0.14),
       fontSize: side.fontSize || 15, dark: isDark, space: 9,
       color: isDark ? C.background1 : C.text1, name: `${name}-${i}-items`,
     });
@@ -276,8 +282,8 @@ function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag,
   const C = pres.SchemeColor;
   let tx = x;
   if (tag !== undefined) {
-    badge(slide, pres, { x, y: y + 0.01, d: 0.38, text: tag, fontSize: 14, name });
-    tx = x + 0.52;
+    badge(slide, pres, { x, y: y + 0.01, d: 0.38, text: tag, fontSize: 13, name });
+    tx = x + Math.max(0.38, lineWidth(String(tag), 13) + 0.2) + 0.14;
   }
   slide.addText(text, {
     x: tx, y, w: w - (tx - x), h: 0.4, margin: 0, isTextBox: true,
