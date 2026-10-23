@@ -30,7 +30,7 @@ module.exports = function closing(pres) {
       [
         { head: "일곱 자기선언", body: "떡 빛 문 목자\n부활생명\n길진리생명\n포도나무" },
         { head: "성령의 복음서", body: "하나님은 영이시다\n배에서 생수의 강이 흘러나리라" },
-        { head: "영광의 복음서", body: "‘영광’이라는 표현이 많다\n대표적으로 1:14과 17장" },
+        { head: "영광의 복음서", body: "‘영광’이라는\n표현이 많다\n1:14 · 17장" },
         { head: "사랑의 복음서", body: "“내가 너희를 사랑한 것 같이\n너희도 서로 사랑하라”" },
         { head: "일곱 표적", body: "가왕베\n오물실나" },
         { head: "유대 중심 사역", body: "명절마다\n예루살렘으로\n올라가심" },
@@ -163,7 +163,7 @@ module.exports = function closing(pres) {
         { head: "② 도마의 회심", body: "20:26~29 · 나의 주, 나의 하나님" },
         { head: "③ 디베랴 바닷가 153마리", body: "21:1~14 · 숯불 위의 생선과 떡" },
       ],
-      { y: 5.82, h: 1.0, cols: 3, headSize: 14, bodySize: 12, pad: 0.18 }
+      { y: 5.74, h: 0.96, cols: 3, headSize: 14, bodySize: 12, pad: 0.18 }
     );
   }
 };

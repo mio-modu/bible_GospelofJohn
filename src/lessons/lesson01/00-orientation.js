@@ -36,9 +36,8 @@ module.exports = function orientation(pres) {
       x: M, y: 3.52, w: 10.5, h: 0.5, margin: 0, isTextBox: true,
       fontSize: 18, color: C.accent6, objectName: "greeting-sub",
     });
-    badge(s, pres, { x: M, y: 4.42, d: 0.1, text: "", name: "dot" });
     s.addText("박성은 목사", {
-      x: M + 0.24, y: 4.28, w: 6, h: 0.4, margin: 0, isTextBox: true,
+      x: M, y: 4.3, w: 6, h: 0.4, margin: 0, isTextBox: true,
       fontSize: 17, bold: true, color: C.accent1, objectName: "teacher",
     });
     s.addNotes("강사 소개와 공동체 인사.");

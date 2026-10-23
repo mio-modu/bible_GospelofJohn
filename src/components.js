@@ -95,7 +95,7 @@ function cardGrid(slide, pres, items, opts = {}) {
     const cy = y + Math.floor(i / cols) * (ch + gap);
     panel(slide, pres, { x: cx, y: cy, w: cw, h: ch, fill: fill || (dark ? C.accent2 : C.background2), name: `${name}-${i}` });
 
-    const footH = it.foot ? textHeight(it.foot, inner, footSize, 1.25) + 0.16 : 0;
+    const footH = it.foot ? textHeight(it.foot, inner, footSize, 1.25) + 0.24 : 0;
     let ty = cy + pad;
     if (it.tag !== undefined) {
       badge(slide, pres, { x: cx + pad, y: ty, d: badgeD, text: it.tag, name: `${name}-${i}` });
@@ -215,7 +215,7 @@ function flow(slide, pres, steps, opts = {}) {
       });
     }
     if (i < steps.length - 1) {
-      slide.addText("▶", {
+      slide.addText("▸", {
         x: bx + bw, y: y + h / 2 - 0.22, w: arrow, h: 0.44, margin: 0, isTextBox: true,
         fontSize: 15, align: "center", valign: "middle", color: C.accent1,
         objectName: `${name}-${i}-arrow`,

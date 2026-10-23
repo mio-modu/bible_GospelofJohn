@@ -242,7 +242,7 @@ module.exports = function overview(pres) {
         { tag: "나", head: "나사로를 살리심", body: "표적 중의 표적\n11:1~44" },
         { tag: "+", head: "153마리 고기", body: "여덟 번째 표적으로 보기도\n21:1~14" },
       ],
-      { y: 1.66, h: 3.95, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
+      { y: 1.66, h: 3.92, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
     );
     keyline(s, pres, {
       y: 5.76, h: 1.06,
@@ -268,7 +268,7 @@ module.exports = function overview(pres) {
         { tag: "참", head: "참 포도나무", body: "15:1\n붙어 있어야 열매 맺는다" },
         { tag: "!", head: "에고 에이미", body: "출 3:14와 같은 표현\n→ 곧 신성 선언" },
       ],
-      { y: 1.66, h: 3.95, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
+      { y: 1.66, h: 3.92, cols: 4, headSize: 16, bodySize: 13, badgeD: 0.46, pad: 0.22 }
     );
     keyline(s, pres, {
       y: 5.76, h: 1.06,
@@ -445,7 +445,7 @@ module.exports = function overview(pres) {
         { tag: "보", head: "보혜사", body: "14~16장" },
         { tag: "대", head: "대제사장 기도", body: "17장" },
       ],
-      { y: 1.7, h: 2.85, cols: 6, headSize: 13, bodySize: 11.5, badgeD: 0.34, pad: 0.14 }
+      { y: 1.7, h: 2.82, cols: 6, headSize: 13, bodySize: 11.5, badgeD: 0.34, pad: 0.14 }
     );
     keyline(s, pres, { y: 4.7, h: 0.74, text: "암기 두문자  ·  가 니 수 베  /  초 간 실 나  /  세 보 대", fontSize: 22 });
     subhead(s, pres, { y: 5.56, tag: "cf", text: "요한복음이 즐겨 쓰는 대조 구도" });

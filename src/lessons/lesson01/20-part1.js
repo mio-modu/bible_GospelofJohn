@@ -142,10 +142,10 @@ module.exports = function part1(pres) {
       pres,
       [
         { tag: "✕", head: "베드로", body: "본서에 이름이 직접 언급된다\n(6:8, 13:6 등)", foot: "제외" },
-        { tag: "✕", head: "야고보", body: "일찍이 순교했다 (행 12:2, AD 44년경)\n1세기 말~2세기 초 기록과 맞지 않는다", foot: "제외" },
+        { tag: "✕", head: "야고보", body: "일찍이 순교했다 (행 12:2)\n1세기 말~2세기 초 기록과 맞지 않는다", foot: "제외" },
         { tag: "○", head: "요한", body: "이름이 밝혀지지 않았고, 생존했으며,\n예수님의 사역 전체를 가장 가까이서 목격한 제자", foot: "결론" },
       ],
-      { y: 2.12, h: 3.2, cols: 3, headSize: 26, bodySize: 14, badgeD: 0.5 }
+      { y: 2.12, h: 3.16, cols: 3, headSize: 26, bodySize: 14, badgeD: 0.5 }
     );
     keyline(s, pres, {
       y: 5.46, h: 0.95,
@@ -290,7 +290,7 @@ module.exports = function part1(pres) {
       left: {
         head: "예수님을 만나기 전",
         fontSize: 15,
-        items: ["급하다 · 목소리가 크다", "권세에 민감하다 (좌우편에 서기)", "자기중심적이고 교만하다", "반대자에게 무자비하다"],
+        items: ["급하다 · 목소리가 크다", "권세에 민감하다 — 좌우편에 서기", "자기중심적이고 교만하다", "반대자에게 무자비하다"],
       },
       right: {
         head: "예수님을 만난 후",
@@ -389,10 +389,10 @@ module.exports = function part1(pres) {
         { head: "부활하신 예수님", body: "부활하신 예수님을 만나고\n알아본 제자\n(20:19~20, 21:7)" },
         { head: "승천", body: "승천을 목격한 제자\n(행 1:9~13)" },
       ],
-      { y: 4.26, h: 1.9, cols: 4, headSize: 17, bodySize: 13.5 }
+      { y: 4.18, h: 1.86, cols: 4, headSize: 17, bodySize: 13.5 }
     );
     keyline(s, pres, {
-      y: 6.26, h: 0.56,
+      y: 6.22, h: 0.58,
       text: "요한은 예수님의 사역 초창기부터 함께하며 가장 많이 목격하고, 가장 가까이에서 섬긴 제자입니다",
       fontSize: 16,
     });
@@ -415,9 +415,9 @@ module.exports = function part1(pres) {
         { tag: "15", head: "심문자들 앞에서", body: "담대히 말함\n학문 없는 범인으로 알았는데", foot: "행 4:13" },
         { tag: "16", head: "금지 명령에 대한 대답", body: "“하나님 앞에서 너희의 말을 듣는 것이\n하나님의 말씀을 듣는 것보다 옳은가 판단하라”", foot: "행 4:19~20" },
       ],
-      { y: 1.7, h: 3.0, cols: 4, headSize: 16, bodySize: 13, footSize: 12 }
+      { y: 1.7, h: 3.1, cols: 4, headSize: 16, bodySize: 13, footSize: 12 }
     );
-    subhead(s, pres, { y: 4.88, tag: "17", text: "이 모든 일이 그들이 목격한 것에 대해 무엇을 말해 주는가" });
+    subhead(s, pres, { y: 4.98, tag: "17", text: "이 모든 일이 그들이 목격한 것에 대해 무엇을 말해 주는가" });
     bullets(
       s,
       pres,
@@ -425,7 +425,7 @@ module.exports = function part1(pres) {
         { text: "그 증언이 ‘진실’이라는 것", sub: "요한은 자신이 목격한 것을 전했고 기록했으며, 그것 때문에 해받는 것을 기꺼이 감수했다" },
         { text: "거짓을 위해 목숨을 걸 사람은 없다", sub: "핍박을 감수한 증언은, 그가 전하고 기록한 것이 진실임을 보여주는 객관적인 증거다" },
       ],
-      { y: 5.44, h: 1.4, fontSize: 15, space: 9 }
+      { y: 5.54, h: 1.3, fontSize: 14, space: 8 }
     );
   }
 

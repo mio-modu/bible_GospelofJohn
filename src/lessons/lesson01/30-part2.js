@@ -87,7 +87,7 @@ module.exports = function part2(pres) {
     compare(s, pres, {
       y: 4.48, h: 2.2,
       left: { head: "동일한 본질 (Essence)", fontSize: 15, items: ["성부 · 성자 · 성령은 한 하나님이시다", "본질에서 나뉘지 않는다 — “나와 아버지는 하나이니라” (10:30)"] },
-      right: { head: "구분된 위격 (Person)", fontSize: 15, items: ["세 분은 인격으로 구분되신다", "아버지와 아들은 서로 사랑하고 대화하신다 (17장)"] },
+      right: { head: "구분된 위격 (Person)", fontSize: 15, items: ["세 분은 인격으로 구분되신다", "17장에서 아버지와 아들은 서로 사랑하고 대화하신다"] },
     });
     s.addNotes("1절은 신약에서 삼위일체를 가장 압축적으로 보여주는 구절 중 하나입니다.");
   }
@@ -203,12 +203,12 @@ module.exports = function part2(pres) {
       fontSize: 14, bold: true, align: "right", valign: "middle", color: C.accent1, objectName: "qtag",
     });
     compare(s, pres, {
-      y: 1.62, h: 2.7,
+      y: 1.6, h: 2.66,
       left: {
         head: "31. 세례 요한의 사역 (6~8절)",
         fontSize: 15,
         items: [
-          { text: "빛에 대해 증언함으로 예수님을 믿게 하는 것", sub: "“그는 빛이 아니요 이 빛에 대하여 증언하러 온 자라”" },
+          { text: "빛에 대해 증언해 예수님을 믿게 하는 것", sub: "“그는 빛이 아니요 이 빛에 대하여 증언하러 온 자라”" },
           { text: "요한복음은 세례요한의 비중을 의도적으로 낮춘다", sub: "“그는 흥하여야 하겠고 나는 쇠하여야 하리라” (3:30)" },
         ],
       },
@@ -221,7 +221,7 @@ module.exports = function part2(pres) {
         ],
       },
     });
-    subhead(s, pres, { y: 4.42, tag: "34", text: "13절 — 하나님의 자녀가 되는 길" });
+    subhead(s, pres, { y: 4.32, tag: "34", text: "13절 — 하나님의 자녀가 되는 길" });
     cardGrid(
       s,
       pres,
@@ -231,7 +231,7 @@ module.exports = function part2(pres) {
         { tag: "✕", head: "사람의 뜻이 아니라", body: "누군가의 결정으로 되지 않는다" },
         { tag: "○", head: "오직 하나님께로 난 자", body: "하나님이 낳으셔야 한다", foot: "근원은 예수님 (35)" },
       ],
-      { y: 4.88, h: 1.85, cols: 4, headSize: 15, bodySize: 13, footSize: 11.5, badgeD: 0.4, pad: 0.2 }
+      { y: 4.78, h: 1.98, cols: 4, headSize: 15, bodySize: 13, footSize: 11.5, badgeD: 0.4, pad: 0.2 }
     );
   }
 
@@ -331,7 +331,7 @@ module.exports = function part2(pres) {
       ref: "요한복음 1:17",
     });
     compare(s, pres, {
-      y: 2.76, h: 2.7,
+      y: 2.76, h: 2.66,
       left: {
         head: "율법의 역할",
         fontSize: 15,
