@@ -1,0 +1,13 @@
+{
+  "name": "bible-gospel-of-john",
+  "version": "1.0.0",
+  "private": true,
+  "description": "요한복음 OBC 강의안 PPT 생성기 (BEE Korea 교재)",
+  "scripts": {
+    "build": "node build.js",
+    "build:01": "node build.js 01"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
