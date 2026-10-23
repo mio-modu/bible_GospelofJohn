@@ -10,7 +10,7 @@
 const path = require("path");
 const fs = require("fs");
 const PptxGenJS = require("pptxgenjs");
-const { THEME, defineLayouts } = require("./src/theme");
+const { FONT, THEME, defineLayouts, enforceFont } = require("./src/theme");
 const { applyTheme } = require("./src/apply-theme");
 const { flushWarnings } = require("./src/components");
 
@@ -31,6 +31,7 @@ async function build(id) {
   pres.subject = lesson.subject;
 
   defineLayouts(pres);
+  enforceFont(pres, FONT); // 모든 글자를 맑은 고딕으로 고정
   lesson.parts.forEach((part) => part(pres));
 
   const outDir = path.join(__dirname, "dist");
@@ -38,6 +39,7 @@ async function build(id) {
   const out = path.join(outDir, lesson.fileName);
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME); // pptxgenjs 는 테마 색을 쓰지 못하므로 사후 주입
+  await fixEastAsianFont(out, FONT); // 테마의 빈 <a:ea> 를 채워 한글이 대체 글꼴로 빠지지 않게
 
   const warnings = flushWarnings();
   if (warnings.length) {
@@ -46,6 +48,17 @@ async function build(id) {
     console.warn("");
   }
   console.log(`생성 완료: ${out}  (${pres.slides.length} 슬라이드)`);
+}
+
+/** 테마 fontScheme 의 East Asian 슬롯이 비어 있으면 한글이 기본 글꼴로 떨어진다. */
+async function fixEastAsianFont(deckPath, font) {
+  const JSZip = require(require.resolve("jszip", { paths: [require.resolve("pptxgenjs")] }));
+  const zip = await JSZip.loadAsync(fs.readFileSync(deckPath));
+  const part = "ppt/theme/theme1.xml";
+  const xml = await zip.file(part).async("string");
+  const esc = font.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  zip.file(part, xml.replace(/<a:ea typeface=""\/>/g, `<a:ea typeface="${esc}"/>`));
+  fs.writeFileSync(deckPath, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
 }
 
 build(process.argv[2] || "01").catch((e) => {

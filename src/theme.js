@@ -8,10 +8,12 @@
  * 색은 전부 이 파일에서만 관리한다. 여기 값을 바꾸면 전체 덱이 바뀐다.
  */
 
+const FONT = "맑은 고딕";
+
 const THEME = {
   name: "Glory - Gospel of John",
-  headFontFace: "맑은 고딕",
-  bodyFontFace: "맑은 고딕",
+  headFontFace: FONT,
+  bodyFontFace: FONT,
   colors: {
     dk1: "17202B", // 본문 먹색 (text1)
     lt1: "FFFFFF", // 흰 배경 (background1)
@@ -62,7 +64,7 @@ function defineLayouts(pres) {
       text: {
         text: FOOTER_TEXT,
         options: {
-          x: M, y: 6.97, w: 8, h: 0.3, margin: 0, isTextBox: true,
+          x: M, y: 6.97, w: 8, h: 0.3, margin: 0, isTextBox: true, fontFace: FONT,
           fontSize: 10, color: dark ? C.accent3 : C.accent4, valign: "middle",
         },
       },
@@ -77,7 +79,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "kicker", type: "body", x: 1.1, y: 2.12, w: 10, h: 0.4, margin: 0,
+            name: "kicker", type: "body",
+            fontFace: FONT, x: 1.1, y: 2.12, w: 10, h: 0.4, margin: 0,
             fontSize: 15, bold: true, charSpacing: 4, color: C.accent1,
           },
           text: "",
@@ -86,7 +89,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: 1.05, y: 2.62, w: 11, h: 1.75, margin: 0,
+            name: "title", type: "title",
+            fontFace: FONT, x: 1.05, y: 2.62, w: 11, h: 1.75, margin: 0,
             fontSize: 56, bold: true, color: C.background1, valign: "top", align: "left",
           },
           text: "",
@@ -95,7 +99,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "body", type: "body", x: 1.1, y: 4.42, w: 10.5, h: 1.5, margin: 0,
+            name: "body", type: "body",
+            fontFace: FONT, x: 1.1, y: 4.42, w: 10.5, h: 1.5, margin: 0,
             fontSize: 18, color: C.accent6, lineSpacingMultiple: 1.35,
           },
           text: "",
@@ -112,7 +117,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "num", type: "body", x: 1.05, y: 2.2, w: 2.2, h: 1.1, margin: 0,
+            name: "num", type: "body",
+            fontFace: FONT, x: 1.05, y: 2.2, w: 2.2, h: 1.1, margin: 0,
             fontSize: 72, bold: true, color: C.accent5, align: "left",
           },
           text: "",
@@ -121,7 +127,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: 1.05, y: 3.42, w: 10.8, h: 1.1, margin: 0,
+            name: "title", type: "title",
+            fontFace: FONT, x: 1.05, y: 3.42, w: 10.8, h: 1.1, margin: 0,
             fontSize: 42, bold: true, color: C.background1, valign: "top", align: "left",
           },
           text: "",
@@ -130,7 +137,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "body", type: "body", x: 1.1, y: 4.6, w: 10, h: 0.9, margin: 0,
+            name: "body", type: "body",
+            fontFace: FONT, x: 1.1, y: 4.6, w: 10, h: 0.9, margin: 0,
             fontSize: 17, color: C.accent6,
           },
           text: "",
@@ -147,7 +155,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
+            name: "title", type: "title",
+            fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
             margin: 0, fontSize: 32, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
@@ -156,7 +165,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "body", type: "body", x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
+            name: "body", type: "body",
+            fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
             margin: 0, fontSize: 16, color: C.text1,
           },
           text: "",
@@ -175,7 +185,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
+            name: "title", type: "title",
+            fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
             margin: 0, fontSize: 32, bold: true, color: C.background1, valign: "middle", align: "left",
           },
           text: "",
@@ -184,7 +195,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "body", type: "body", x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
+            name: "body", type: "body",
+            fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
             margin: 0, fontSize: 16, color: C.accent6,
           },
           text: "",
@@ -203,7 +215,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "kicker", type: "body", x: M, y: 0.72, w: 8, h: 0.4, margin: 0,
+            name: "kicker", type: "body",
+            fontFace: FONT, x: M, y: 0.72, w: 8, h: 0.4, margin: 0,
             fontSize: 14, bold: true, charSpacing: 3, color: C.accent6,
           },
           text: "",
@@ -212,7 +225,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: M, y: 1.18, w: LAYOUT.CONTENT_W, h: 0.95,
+            name: "title", type: "title",
+            fontFace: FONT, x: M, y: 1.18, w: LAYOUT.CONTENT_W, h: 0.95,
             margin: 0, fontSize: 38, bold: true, color: C.background1, valign: "middle", align: "left",
           },
           text: "",
@@ -221,7 +235,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "body", type: "body", x: M, y: 2.35, w: LAYOUT.CONTENT_W, h: 4.3,
+            name: "body", type: "body",
+            fontFace: FONT, x: M, y: 2.35, w: LAYOUT.CONTENT_W, h: 4.3,
             margin: 0, fontSize: 18, color: C.background1,
           },
           text: "",
@@ -241,7 +256,8 @@ function defineLayouts(pres) {
       {
         placeholder: {
           options: {
-            name: "title", type: "title", x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
+            name: "title", type: "title",
+            fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
             margin: 0, fontSize: 32, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
@@ -253,4 +269,35 @@ function defineLayouts(pres) {
   });
 }
 
-module.exports = { THEME, HEX, LAYOUT, SHADOW, FOOTER_TEXT, defineLayouts };
+/**
+ * pptxgenjs 는 "모든 글자를 이 폰트로" 같은 전역 설정이 없다.
+ * addSlide 를 감싸서 addText/addTable 에 fontFace 를 기본값으로 넣어,
+ * 테마 상속에 기대지 않고 런(run)마다 맑은 고딕이 직접 박히게 한다.
+ */
+function enforceFont(pres, font = FONT) {
+  const addSlide = pres.addSlide.bind(pres);
+  pres.addSlide = (opts) => {
+    const slide = addSlide(opts);
+    const addText = slide.addText.bind(slide);
+    const addTable = slide.addTable.bind(slide);
+    slide.addText = (text, o = {}) => {
+      const runs = Array.isArray(text)
+        ? text.map((r) => (r && typeof r === "object" && r.text !== undefined ? { ...r, options: { fontFace: font, ...(r.options || {}) } } : r))
+        : text;
+      return addText(runs, { fontFace: font, ...o });
+    };
+    slide.addTable = (rows, o = {}) => {
+      const body = rows.map((row) =>
+        row.map((c) =>
+          c && typeof c === "object" && c.text !== undefined
+            ? { ...c, options: { fontFace: font, ...(c.options || {}) } }
+            : { text: String(c), options: { fontFace: font } }
+        )
+      );
+      return addTable(body, { fontFace: font, ...o });
+    };
+    return slide;
+  };
+}
+
+module.exports = { FONT, THEME, HEX, LAYOUT, SHADOW, FOOTER_TEXT, defineLayouts, enforceFont };
