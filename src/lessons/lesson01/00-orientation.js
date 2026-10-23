@@ -40,7 +40,7 @@ module.exports = function orientation(pres) {
       [
         { head: "오리엔테이션", body: "과정 · 수료 기준" },
         { head: "소그룹 나눔", body: "소개 · 조장 선출" },
-        { head: "요한복음 분석", body: "저자 · 구조 · 완전수 7" },
+        { head: "요한복음 분석", body: "저자 · 구조\n완전수 7" },
         { head: "1과 전반", body: "예수님에 대한 증언\n질문 1~21" },
         { head: "1과 후반", body: "하나님에 대한 증언\n질문 22~41" },
       ],
@@ -107,8 +107,8 @@ module.exports = function orientation(pres) {
       [
         { head: "소감문", body: "매주 제출 (총 6주간)" },
         { head: "간증문", body: "8주차 강의까지 제출" },
-        { head: "성적 산출", body: "출석 60% · 과제 30% · 시험 10%" },
-        { head: "출석", body: "결석 1회까지 허용\n지각 20분 이상 2회 = 결석 1회" },
+        { head: "성적 산출", body: "출석 60% · 과제 30%\n시험 10%" },
+        { head: "출석", body: "결석 1회까지 허용\n지각 20분 이상\n2회 = 결석 1회" },
       ],
       { x: M, y: 2.14, w: 6.1, h: 3.4, cols: 2, headSize: 16, bodySize: 13 }
     );

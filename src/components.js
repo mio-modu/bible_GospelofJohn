@@ -177,8 +177,13 @@ function bullets(slide, pres, items, opts = {}) {
 /** 성경 본문 인용 블록 */
 function scripture(slide, pres, { x, y, w, h, text, ref, fontSize = 22, dark = true, name = "scripture" }) {
   const C = pres.SchemeColor;
+  const avail = h - 0.5;
+  const need = textHeight(`“${text}”`, w, fontSize, 1.42);
+  if (need > avail + 0.02) {
+    warn(`scripture[${name}] 본문이 출처 줄과 ${(need - avail).toFixed(2)}" 겹칩니다: "${String(text).slice(0, 24)}…"`, slide);
+  }
   slide.addText(`“${text}”`, {
-    x, y, w, h: h - 0.5, margin: 0, isTextBox: true, fontSize, italic: true,
+    x, y, w, h: avail, margin: 0, isTextBox: true, fontSize, italic: true,
     color: dark ? C.background1 : C.text1, lineSpacingMultiple: 1.42, valign: "top",
     objectName: `${name}-text`,
   });

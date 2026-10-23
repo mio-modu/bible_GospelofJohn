@@ -104,7 +104,7 @@ module.exports = function part2(pres) {
     s.addText("나. 인도자이신 예수님 (1:4~13)", { placeholder: "title" });
     qtag(s, "질문 29~30");
     scripture(s, pres, {
-      x: M, y: 1.6, w: 11.8, h: 1.0, dark: false, fontSize: 18,
+      x: M, y: 1.56, w: 11.8, h: 1.22, dark: false, fontSize: 18,
       text: "그 안에 생명이 있었으니 이 생명은 사람들의 빛이라 빛이 어둠에 비치되 어둠이 깨닫지 못하더라",
       ref: "요한복음 1:4~5",
     });
@@ -116,7 +116,7 @@ module.exports = function part2(pres) {
         { tag: "기능", head: "빛은 무엇을 하는가", body: "어둠 속에서 보게 한다\n하나님을 알게 한다\n내면의 어둠을 물러나게 한다" },
         { tag: "30", head: "그래서 예수님은", body: "인도자 (모습 ③)\n빛은 ‘인도’의 기능을 수행한다" },
       ],
-      { y: 2.78, h: 2.14, cols: 3, headSize: 16, bodySize: 13.5 }
+      { y: 2.86, h: 2.18, cols: 3, headSize: 16, bodySize: 13.5 }
     );
     flow(
       s,
@@ -127,10 +127,10 @@ module.exports = function part2(pres) {
         { head: "돌아섬", body: "오직 빛을 향해\n돌아서는 길밖에 없다" },
         { head: "생명", body: "생명이 그분 안에 있다\n빛 안에서 삶이 보인다" },
       ],
-      { y: 5.1, h: 1.34, headSize: 16, bodySize: 12.5 }
+      { y: 5.14, h: 1.24, headSize: 16, bodySize: 12.5 }
     );
     s.addText("어둠은 빛을 이기지 못합니다 — 다만 깨닫지 못할 뿐입니다 (1:5)", {
-      x: M, y: 6.52, w: LAYOUT.CONTENT_W, h: 0.36, margin: 0, isTextBox: true,
+      x: M, y: 6.48, w: LAYOUT.CONTENT_W, h: 0.36, margin: 0, isTextBox: true,
       fontSize: 14, bold: true, color: C.accent5, objectName: "note",
     });
   }
@@ -186,10 +186,10 @@ module.exports = function part2(pres) {
         { tag: "Q7", head: "나에게 세례요한은 누구였나", body: "나를 예수님께로 가리켜 준\n사람의 이름을 떠올려 봅시다.\n\n그리고 — 나는 누구에게\n그런 사람이 되려 합니까?" },
         { tag: "Q8", head: "어두운 세상에서 빛을 밝히려면", body: "내가 할 수 있는 일은?\n\n이번 주에 실제로 할 수 있는\n한 가지를 적어 봅시다." },
       ],
-      { y: 2.5, h: 3.1, cols: 3, headSize: 19, bodySize: 14.5, dark: true, fill: C.text2 }
+      { y: 2.42, h: 3.36, cols: 3, headSize: 19, bodySize: 14.5, dark: true, fill: C.text2 }
     );
     s.addText("조별 나눔 10분 → 전체 나눔 2명", {
-      x: M, y: 5.86, w: 8, h: 0.4, margin: 0, isTextBox: true,
+      x: M, y: 5.92, w: 8, h: 0.4, margin: 0, isTextBox: true,
       fontSize: 14, bold: true, color: C.accent1, objectName: "guide",
     });
   }
@@ -200,26 +200,26 @@ module.exports = function part2(pres) {
     s.addText("다. 하나님이신 예수님 (1:14~18) — 성육신", { placeholder: "title" });
     qtag(s, "질문 36~37");
     scripture(s, pres, {
-      x: M, y: 1.6, w: 11.8, h: 1.1, dark: false, fontSize: 18,
+      x: M, y: 1.58, w: 11.8, h: 1.3, dark: false, fontSize: 18,
       text: "말씀이 육신이 되어 우리 가운데 거하시매 우리가 그의 영광을 보니 아버지의 독생자의 영광이요 은혜와 진리가 충만하더라",
       ref: "요한복음 1:14 — 요한복음에서 ‘영광’이 처음 등장하는 자리",
     });
     keyline(s, pres, {
-      y: 2.88, h: 0.66,
+      y: 3.04, h: 0.62,
       text: "36. 말씀이 육신이 되었다 = 성육신(Incarnation)  ·  먼저 찾아와 주시는 하나님, 가까이 계시는 하나님",
       fontSize: 17,
     });
-    subhead(s, pres, { y: 3.74, tag: "37", text: "인간이 되기 위해 예수님이 포기하신 것, 그리고 그 이유" });
+    subhead(s, pres, { y: 3.88, tag: "37", text: "인간이 되기 위해 예수님이 포기하신 것, 그리고 그 이유" });
     compare(s, pres, {
-      y: 4.2, h: 2.2,
+      y: 4.3, h: 2.16,
       left: {
         head: "포기하신 것",
-        fontSize: 14,
+        fontSize: 13.5,
         items: ["하나님으로서의 영광 그 자체 (빌 2:6)", "신적 특권 — 전능·전지의 사용", "하나님과의 깊은 관계성"],
       },
       right: {
         head: "왜 포기하셨는가",
-        fontSize: 14,
+        fontSize: 13.5,
         items: ["자녀가 되는 권세를 주기 위해 (1:12)", "구원의 놀라운 은혜를 주기 위해", "“자기를 비워 종의 형체를 가지사” (빌 2:7)"],
       },
     });

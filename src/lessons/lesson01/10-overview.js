@@ -146,9 +146,9 @@ module.exports = function overview(pres) {
         { tag: "교훈", head: "13~17장", body: "다락방 강화, 아들의 가르침\n약 2~3시간 · 생명을 얻기 위함" },
         { tag: "영광", head: "18~21장", body: "십자가와 부활, 갈릴리 현현\n약 2~3주 · 생명을 얻기 위함" },
       ],
-      { y: 2.1, h: 2.1, cols: 3, headSize: 22, bodySize: 13.5, badgeD: 0.46 }
+      { y: 2.04, h: 2.05, cols: 3, headSize: 22, bodySize: 13.5, badgeD: 0.46 }
     );
-    subhead(s, pres, { y: 4.34, tag: "②", text: "다섯 단으로 보면" });
+    subhead(s, pres, { y: 4.18, tag: "②", text: "다섯 단으로 보면" });
     const rows = [
       headRow(pres, ["단", "본문", "내용", "키워드"]),
       ["1", "1:1~18", "신학적 서론 — 성육신하신 예수님", "말씀 · 빛 · 영광"],
@@ -170,7 +170,7 @@ module.exports = function overview(pres) {
             },
           }))
     );
-    s.addTable(body, { ...tableOpts(pres, { colW: [0.8, 1.9, 6.3, 2.83], y: 4.86, rowH: 0.33, fontSize: 12 }) });
+    s.addTable(body, { ...tableOpts(pres, { colW: [0.8, 1.9, 6.3, 2.83], y: 4.62, rowH: 0.33, fontSize: 12 }) });
   }
 
   // ── 구조 ③ 교재 8과
@@ -347,8 +347,8 @@ module.exports = function overview(pres) {
     };
     render(left, M);
     render(right, M + 6.33);
-    s.addText("13~17장(다락방 강화) 다섯 장이 ‘2~3시간’을 다룹니다 — 요한이 가장 공들인 대목입니다.", {
-      x: M + 6.33, y: 6.36, w: 6.1, h: 0.38, margin: 0, isTextBox: true,
+    s.addText("13~17장(다락방 강화) 다섯 장이 ‘2~3시간’을 다룹니다", {
+      x: M, y: 6.38, w: 6.1, h: 0.34, margin: 0, isTextBox: true,
       fontSize: 12.5, bold: true, color: C.accent5, objectName: "note",
     });
   }
@@ -374,27 +374,27 @@ module.exports = function overview(pres) {
         { tag: "보", head: "보혜사", body: "14~16장" },
         { tag: "대", head: "대제사장 기도", body: "17장" },
       ],
-      { y: 2.08, h: 2.72, cols: 6, headSize: 12.5, bodySize: 11, badgeD: 0.32, pad: 0.13 }
+      { y: 2.04, h: 2.68, cols: 6, headSize: 12.5, bodySize: 11, badgeD: 0.32, pad: 0.13 }
     );
-    subhead(s, pres, { y: 4.96, tag: "암기", text: "오늘 가져갈 두문자" });
+    subhead(s, pres, { y: 4.82, tag: "암기", text: "오늘 가져갈 두문자" });
     const lines = [
       ["일곱 표적", "가 왕 베 오 물 실 나"],
       ["일곱 자기선언", "생 세 양 선 부 길 참"],
       ["1~12장 사건", "가 니 수 베 / 오 초 간 / 실 양 나 마"],
       ["요한 특수자료", "가 니 수 베 / 초 간 실 나 / 세 보 대"],
     ];
-    let y = 5.46;
+    let y = 5.26;
     lines.forEach((l, i) => {
-      panel(s, pres, { x: M, y, w: LAYOUT.CONTENT_W, h: 0.4, fill: C.text2, shadow: false, radius: 0.08, name: `memo-${i}` });
+      panel(s, pres, { x: M, y, w: LAYOUT.CONTENT_W, h: 0.38, fill: C.text2, shadow: false, radius: 0.08, name: `memo-${i}` });
       s.addText(l[0], {
-        x: M + 0.26, y, w: 2.4, h: 0.4, margin: 0, isTextBox: true,
+        x: M + 0.26, y, w: 2.4, h: 0.38, margin: 0, isTextBox: true,
         fontSize: 13, bold: true, color: C.accent6, valign: "middle", objectName: `memo-${i}-k`,
       });
       s.addText(l[1], {
-        x: M + 2.8, y, w: 8.8, h: 0.4, margin: 0, isTextBox: true,
+        x: M + 2.8, y, w: 8.8, h: 0.38, margin: 0, isTextBox: true,
         fontSize: 15, bold: true, color: C.accent1, valign: "middle", objectName: `memo-${i}-v`,
       });
-      y += 0.46;
+      y += 0.42;
     });
     s.addNotes("두문자는 2주차 복습 퀴즈로 다시 물어봅니다.");
   }
