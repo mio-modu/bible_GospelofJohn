@@ -41,8 +41,8 @@ const LAYOUT = {
   H: 7.5,
   MARGIN: 0.75,
   TITLE_Y: 0.46,
-  TITLE_H: 0.82,
-  BODY_Y: 1.56, // 본문 시작 y - 모든 콘텐츠 슬라이드 공통
+  TITLE_H: 0.92,
+  BODY_Y: 1.62, // 본문 시작 y - 모든 콘텐츠 슬라이드 공통
   BODY_BOTTOM: 6.86, // 본문이 넘어가면 안 되는 하한선
 };
 LAYOUT.CONTENT_W = LAYOUT.W - LAYOUT.MARGIN * 2;
@@ -57,7 +57,7 @@ function defineLayouts(pres) {
   const C = pres.SchemeColor;
   const M = LAYOUT.MARGIN;
 
-  const slideNum = (dark) => ({ x: 12.0, y: 6.97, w: 0.58, h: 0.3, fontSize: 10, align: "right", color: dark ? HEX_FOOT.dark : HEX_FOOT.light, fontFace: THEME.bodyFontFace });
+  const slideNum = (dark) => ({ x: 12.0, y: 6.97, w: 0.58, h: 0.3, fontSize: 11, align: "right", color: dark ? HEX_FOOT.dark : HEX_FOOT.light, fontFace: THEME.bodyFontFace });
 
   const footer = (dark) => [
     {
@@ -65,7 +65,7 @@ function defineLayouts(pres) {
         text: FOOTER_TEXT,
         options: {
           x: M, y: 6.97, w: 8, h: 0.3, margin: 0, isTextBox: true, fontFace: FONT,
-          fontSize: 10, color: dark ? C.accent3 : C.accent4, valign: "middle",
+          fontSize: 11, color: dark ? C.accent3 : C.accent4, valign: "middle",
         },
       },
     },
@@ -81,7 +81,7 @@ function defineLayouts(pres) {
           options: {
             name: "kicker", type: "body",
             fontFace: FONT, x: 1.1, y: 2.12, w: 10, h: 0.4, margin: 0,
-            fontSize: 15, bold: true, charSpacing: 4, color: C.accent1,
+            fontSize: 17, bold: true, charSpacing: 4, color: C.accent1,
           },
           text: "",
         },
@@ -91,7 +91,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: 1.05, y: 2.62, w: 11, h: 1.75, margin: 0,
-            fontSize: 56, bold: true, color: C.background1, valign: "top", align: "left",
+            fontSize: 54, bold: true, color: C.background1, valign: "top", align: "left",
           },
           text: "",
         },
@@ -101,7 +101,7 @@ function defineLayouts(pres) {
           options: {
             name: "body", type: "body",
             fontFace: FONT, x: 1.1, y: 4.42, w: 10.5, h: 1.5, margin: 0,
-            fontSize: 18, color: C.accent6, lineSpacingMultiple: 1.35,
+            fontSize: 20, color: C.accent6, lineSpacingMultiple: 1.35,
           },
           text: "",
         },
@@ -129,7 +129,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: 1.05, y: 3.42, w: 10.8, h: 1.1, margin: 0,
-            fontSize: 42, bold: true, color: C.background1, valign: "top", align: "left",
+            fontSize: 46, bold: true, color: C.background1, valign: "top", align: "left",
           },
           text: "",
         },
@@ -139,7 +139,7 @@ function defineLayouts(pres) {
           options: {
             name: "body", type: "body",
             fontFace: FONT, x: 1.1, y: 4.6, w: 10, h: 0.9, margin: 0,
-            fontSize: 17, color: C.accent6,
+            fontSize: 19, color: C.accent6,
           },
           text: "",
         },
@@ -157,7 +157,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 32, bold: true, color: C.text1, valign: "middle", align: "left",
+            margin: 0, fontSize: 36, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
         },
@@ -167,7 +167,7 @@ function defineLayouts(pres) {
           options: {
             name: "body", type: "body",
             fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
-            margin: 0, fontSize: 16, color: C.text1,
+            margin: 0, fontSize: 18, color: C.text1,
           },
           text: "",
         },
@@ -187,7 +187,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 32, bold: true, color: C.background1, valign: "middle", align: "left",
+            margin: 0, fontSize: 36, bold: true, color: C.background1, valign: "middle", align: "left",
           },
           text: "",
         },
@@ -197,7 +197,7 @@ function defineLayouts(pres) {
           options: {
             name: "body", type: "body",
             fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
-            margin: 0, fontSize: 16, color: C.accent6,
+            margin: 0, fontSize: 18, color: C.accent6,
           },
           text: "",
         },
@@ -217,7 +217,7 @@ function defineLayouts(pres) {
           options: {
             name: "kicker", type: "body",
             fontFace: FONT, x: M, y: 0.72, w: 8, h: 0.4, margin: 0,
-            fontSize: 14, bold: true, charSpacing: 3, color: C.accent6,
+            fontSize: 16, bold: true, charSpacing: 3, color: C.accent6,
           },
           text: "",
         },
@@ -227,7 +227,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: 1.18, w: LAYOUT.CONTENT_W, h: 0.95,
-            margin: 0, fontSize: 38, bold: true, color: C.background1, valign: "middle", align: "left",
+            margin: 0, fontSize: 42, bold: true, color: C.background1, valign: "middle", align: "left",
           },
           text: "",
         },
@@ -237,7 +237,7 @@ function defineLayouts(pres) {
           options: {
             name: "body", type: "body",
             fontFace: FONT, x: M, y: 2.35, w: LAYOUT.CONTENT_W, h: 4.3,
-            margin: 0, fontSize: 18, color: C.background1,
+            margin: 0, fontSize: 20, color: C.background1,
           },
           text: "",
         },
@@ -258,7 +258,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 32, bold: true, color: C.text1, valign: "middle", align: "left",
+            margin: 0, fontSize: 36, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
         },

@@ -80,7 +80,7 @@ function cardGrid(slide, pres, items, opts = {}) {
   const C = pres.SchemeColor;
   const {
     x = LAYOUT.MARGIN, y = LAYOUT.BODY_Y, w = LAYOUT.CONTENT_W, h = LAYOUT.BODY_H,
-    cols = items.length, gap = 0.26, headSize = 17, bodySize = 14, footSize = 12,
+    cols = items.length, gap = 0.26, headSize = 20.5, bodySize = 17, footSize = 15.5,
     fill, dark = false, badgeD = 0.44, pad = 0.26, name = "card",
   } = opts;
   const rows = Math.ceil(items.length / cols);
@@ -137,7 +137,7 @@ function bullets(slide, pres, items, opts = {}) {
   const C = pres.SchemeColor;
   const {
     x = LAYOUT.MARGIN, y = LAYOUT.BODY_Y, w = LAYOUT.CONTENT_W, h,
-    fontSize = 16, dark = false, color, space = 10, indentSub = true, name = "bullets",
+    fontSize = 19.5, dark = false, color, space = 10, indentSub = true, name = "bullets",
   } = opts;
   const base = color || (dark ? C.accent6 : C.text1);
   const runs = [];
@@ -175,7 +175,7 @@ function bullets(slide, pres, items, opts = {}) {
 }
 
 /** 성경 본문 인용 블록 */
-function scripture(slide, pres, { x, y, w, h, text, ref, fontSize = 22, dark = true, name = "scripture" }) {
+function scripture(slide, pres, { x, y, w, h, text, ref, fontSize = 25, dark = true, name = "scripture" }) {
   const C = pres.SchemeColor;
   const avail = h - 0.5;
   const need = textHeight(`“${text}”`, w, fontSize, 1.42);
@@ -198,7 +198,7 @@ function flow(slide, pres, steps, opts = {}) {
   const C = pres.SchemeColor;
   const {
     x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 1.5,
-    headSize = 17, bodySize = 13, dark = false, arrow = 0.42, name = "flow",
+    headSize = 20.5, bodySize = 16, dark = false, arrow = 0.42, name = "flow",
   } = opts;
   const bw = (w - arrow * (steps.length - 1)) / steps.length;
   steps.forEach((s, i) => {
@@ -256,7 +256,7 @@ function stats(slide, pres, items, opts = {}) {
   const C = pres.SchemeColor;
   const {
     x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 1.7, gap = 0.26,
-    numSize = 44, dark = false, name = "stat",
+    numSize = 47.5, dark = false, name = "stat",
   } = opts;
   const cw = (w - gap * (items.length - 1)) / items.length;
   items.forEach((it, i) => {
@@ -283,7 +283,7 @@ function stats(slide, pres, items, opts = {}) {
 }
 
 /** 섹션 안의 작은 소제목 (금색 배지 + 굵은 글씨) */
-function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag, text, dark = false, fontSize = 19, name = "subhead" }) {
+function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag, text, dark = false, fontSize = 21.5, name = "subhead" }) {
   const C = pres.SchemeColor;
   let tx = x;
   if (tag !== undefined) {
@@ -298,7 +298,7 @@ function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag,
 }
 
 /** 한 줄 핵심 요약 띠 (먹색 바탕 + 금색 글씨) */
-function keyline(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 0.62, text, fontSize = 17, name = "keyline" }) {
+function keyline(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 0.62, text, fontSize = 20.5, name = "keyline" }) {
   const C = pres.SchemeColor;
   panel(slide, pres, { x, y, w, h, fill: C.text2, radius: 0.1, shadow: false, name });
   slide.addText(text, {
@@ -308,7 +308,7 @@ function keyline(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 
 }
 
 /** 표 기본 스타일 */
-function tableOpts(pres, { colW, x = LAYOUT.MARGIN, y = LAYOUT.BODY_Y, fontSize = 13, rowH = 0.42 }) {
+function tableOpts(pres, { colW, x = LAYOUT.MARGIN, y = LAYOUT.BODY_Y, fontSize = 16, rowH = 0.42 }) {
   const C = pres.SchemeColor;
   return {
     x, y, w: LAYOUT.CONTENT_W, colW, rowH,
