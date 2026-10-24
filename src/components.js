@@ -41,7 +41,7 @@ function flushWarnings() {
 /** 금색 원형 배지 - 덱 전체를 묶는 시각 모티프 */
 function badge(slide, pres, { x, y, d = 0.46, text = "", fill, color, fontSize, name }) {
   const C = pres.SchemeColor;
-  const fs = fontSize || Math.round(d * 30);
+  const fs = fontSize || Math.round(d * 34);
   // 글자가 원보다 넓으면 알약 모양으로 늘려 잘리지 않게 한다
   const w = Math.max(d, lineWidth(String(text), fs) + 0.2);
   slide.addShape(w > d + 0.01 ? pres.ShapeType.roundRect : pres.ShapeType.ellipse, {
@@ -287,8 +287,8 @@ function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag,
   const C = pres.SchemeColor;
   let tx = x;
   if (tag !== undefined) {
-    badge(slide, pres, { x, y: y + 0.01, d: 0.38, text: tag, fontSize: 13, name });
-    tx = x + Math.max(0.38, lineWidth(String(tag), 13) + 0.2) + 0.14;
+    badge(slide, pres, { x, y: y - 0.02, d: 0.46, text: tag, fontSize: 15, name });
+    tx = x + Math.max(0.46, lineWidth(String(tag), 15) + 0.22) + 0.16;
   }
   slide.addText(text, {
     x: tx, y, w: w - (tx - x), h: 0.4, margin: 0, isTextBox: true,
@@ -327,7 +327,7 @@ function headRow(pres, labels) {
   const C = pres.SchemeColor;
   return labels.map((t) => ({
     text: t,
-    options: { bold: true, color: C.background1, fill: { color: HEX.dk2 }, align: "center", fontSize: 13 },
+    options: { bold: true, color: C.background1, fill: { color: HEX.dk2 }, align: "center", fontSize: 16 },
   }));
 }
 
