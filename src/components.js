@@ -89,6 +89,8 @@ function cardGrid(slide, pres, items, opts = {}) {
   const headColor = dark ? C.background1 : C.text1;
   const bodyColor = dark ? C.accent6 : C.accent3;
   const inner = cw - pad * 2;
+  // 카드마다 제목 줄 수가 다르면 본문 시작선이 어긋난다 — 한 줄 가장 높은 제목에 맞춘다
+  const headH = Math.max(0, ...items.map((it) => (it.head ? textHeight(it.head, inner, headSize, 1.26) : 0)));
 
   items.forEach((it, i) => {
     const cx = x + (i % cols) * (cw + gap);
@@ -102,14 +104,13 @@ function cardGrid(slide, pres, items, opts = {}) {
       ty += badgeD + 0.14;
     }
     if (it.head) {
-      const hh = textHeight(it.head, inner, headSize, 1.26);
       slide.addText(it.head, {
-        x: cx + pad, y: ty, w: inner, h: hh, margin: 0, isTextBox: true,
+        x: cx + pad, y: ty, w: inner, h: headH, margin: 0, isTextBox: true,
         fontSize: headSize, bold: true, color: headColor, valign: "top",
         objectName: `${name}-${i}-head`,
       });
-      ty += hh + 0.08;
     }
+    if (headH) ty += headH + 0.08;
     if (it.body) {
       const avail = cy + ch - pad - footH - ty;
       const need = textHeight(it.body, inner, bodySize, 1.24);

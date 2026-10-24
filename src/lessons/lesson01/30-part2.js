@@ -99,10 +99,10 @@ module.exports = function part2(pres) {
         { tag: "①", head: "영원하신 분", body: "“태초에 말씀이 계시니라”\n\n창조 이전부터 계셨다.\n시작도 끝도 없으시다.\n\n요한복음에 족보도,\n출생 기사도 없는 이유다." },
         { tag: "②", head: "창조주", body: "“만물이 그로 말미암아\n지은 바 되었으니” (3절)\n\n창세기 1장\n“하나님이 말씀하시니…”와 연결.\n\ncf. 골 1:15~17" },
       ],
-      { y: 1.74, h: 4.06, cols: 2, headSize: 28, bodySize: 18, badgeD: 0.58 }
+      { y: 1.72, h: 4.3, cols: 2, headSize: 28, bodySize: 18, badgeD: 0.58 }
     );
     keyline(s, pres, {
-      y: 5.98, h: 0.84,
+      y: 6.2, h: 0.62,
       text: "나를 지으신 분이 나를 구원하러 오셨습니다",
       fontSize: 24,
     });

@@ -34,7 +34,7 @@ module.exports = function closing(pres) {
         { head: "일곱 표적", body: "가왕베\n오물실나" },
         { head: "유대 중심 사역", body: "명절마다\n예루살렘으로" },
       ],
-      { y: 4.86, h: 1.94, cols: 6, headSize: 15, bodySize: 14, pad: 0.18 }
+      { y: 4.8, h: 2.0, cols: 6, headSize: 16, bodySize: 15, pad: 0.17 }
     );
   }
 
@@ -113,30 +113,30 @@ module.exports = function closing(pres) {
     const left = [
       ["성령의 상징", "바람 · 비둘기 · 물 · 기름 · 인 · 불"],
       ["안식일 치유 6", "손 마른 자 · 꼬부라진 여인 · 수종병자\n베데스다 · 실로암 · 가버나움 축귀"],
-      ["“다시는 죄를 범하지 말라”", "간음한 여인 (8:11) · 베데스다 병자 (5:14)"],
-      ["출교", "9:22 · 12:42 · 16:2"],
+      ["“다시는 죄를 범하지 말라” · 출교", "간음한 여인 (8:11) · 베데스다 병자 (5:14)\n출교 : 9:22 · 12:42 · 16:2"],
+      ["대조 구도", "빛 / 어두움 · 영 / 육\n진리 / 거짓 · 자유 / 종"],
     ];
     const right = [
       ["제6시", "수가성 여인 · 십자가의 어둠"],
       ["제3시", "십자가에 못 박히심 · 성령 강림"],
       ["제9시", "예수님의 죽음 · 미문의 앉은뱅이"],
       ["제10시", "안드레의 부르심 (1:39)"],
-      ["대조 구도", "빛 / 어두움 · 영 / 육\n진리 / 거짓 · 자유 / 종"],
+      ["밤 사경", "예수님이 바다 위를 걸으심 (6장)"],
     ];
     const render = (items, x) => {
       let y = 1.76;
       items.forEach((it, i) => {
-        const h = it[1].includes("\n") ? 1.3 : 1.0;
+        const h = it[1].includes("\n") ? 1.14 : 0.88;
         panel(s, pres, { x, y, w: 6.1, h, fill: C.background2, shadow: false, name: `ap-${x}-${i}` });
         s.addText(it[0], {
-          x: x + 0.26, y: y + 0.12, w: 5.6, h: 0.4, margin: 0, isTextBox: true,
+          x: x + 0.26, y: y + 0.09, w: 5.6, h: 0.36, margin: 0, isTextBox: true,
           fontSize: 17, bold: true, color: C.accent1, objectName: `ap-${x}-${i}-k`,
         });
         s.addText(it[1], {
-          x: x + 0.26, y: y + 0.52, w: 5.6, h: h - 0.64, margin: 0, isTextBox: true,
+          x: x + 0.26, y: y + 0.46, w: 5.6, h: h - 0.55, margin: 0, isTextBox: true,
           fontSize: 15.5, color: C.text1, lineSpacingMultiple: 1.16, valign: "top", objectName: `ap-${x}-${i}-v`,
         });
-        y += h + 0.16;
+        y += h + 0.13;
       });
     };
     render(left, M);

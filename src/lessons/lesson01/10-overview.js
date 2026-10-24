@@ -242,9 +242,9 @@ module.exports = function overview(pres) {
             },
           }))
     );
-    s.addTable(body, { ...tableOpts(pres, { colW: [2.9, 2.0, 6.93], y: 1.8, rowH: 0.56, fontSize: 17 }) });
+    s.addTable(body, { ...tableOpts(pres, { colW: [2.9, 2.0, 6.93], y: 1.76, rowH: 0.5, fontSize: 17 }) });
     keyline(s, pres, {
-      y: 6.0, h: 0.8,
+      y: 6.1, h: 0.7,
       text: "유대 지도자 · 사마리아 여인 · 이방 주민 · 의심한 제자 — 모두 같은 결론에 도달합니다",
       fontSize: 18,
     });
@@ -354,7 +354,7 @@ module.exports = function overview(pres) {
         { tag: "보", head: "보혜사", body: "14~16장" },
         { tag: "대", head: "대제사장 기도", body: "17장" },
       ],
-      { y: 1.76, h: 3.78, cols: 6, headSize: 15, bodySize: 14, badgeD: 0.4, pad: 0.17 }
+      { y: 1.74, h: 3.9, cols: 6, headSize: 16, bodySize: 15, badgeD: 0.42, pad: 0.16 }
     );
     keyline(s, pres, {
       y: 5.72, h: 1.08,

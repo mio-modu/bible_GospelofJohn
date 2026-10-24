@@ -124,9 +124,9 @@ module.exports = function part1(pres) {
         { tag: "7", head: "왜 즉각 응답했나", body: "말씀에 순종해 그물을 내리자\n많은 고기가 잡힘\n→ 능력을 직접 경험" },
         { tag: "8", head: "무엇을 포기했나", body: "배를 포함한 생업 전부\n— 삶의 근간이었다" },
       ],
-      { y: 3.42, h: 2.78, cols: 3, headSize: 21, bodySize: 17 }
+      { y: 3.4, h: 2.74, cols: 3, headSize: 21, bodySize: 17 }
     );
-    keyline(s, pres, { y: 6.32, h: 0.5, text: "만남은 소명으로, 소명은 순종과 내려놓음으로 이어집니다", fontSize: 22 });
+    keyline(s, pres, { y: 6.32, h: 0.48, text: "만남은 소명으로, 소명은 순종과 내려놓음으로 이어집니다", fontSize: 22 });
   }
 
   // ── 나눔 Q1 · Q2
@@ -181,12 +181,12 @@ module.exports = function part1(pres) {
       left: {
         head: "만나기 전",
         fontSize: 18,
-        items: ["급하다 · 목소리가 크다", "권세에 민감하다", "자기중심적이고 교만하다", "반대자에게 무자비하다"],
+        items: ["급하고 목소리가 크다", "권세에 민감하다", "자기중심적이고 교만하다", "반대자에게 무자비하다"],
       },
       right: {
         head: "만난 후",
         fontSize: 18,
-        items: ["예수님의 성품을 닮아 갔다", "사랑을 가장 중요하게 여겼다", "‘서로 사랑하라’ 새 계명", "마침내 사랑의 사도가 되었다"],
+        items: ["예수님을 닮아 갔다", "사랑을 중요하게 여겼다", "새 계명 : 서로 사랑하라", "사랑의 사도가 되었다"],
       },
     });
     s.addChart(
@@ -282,9 +282,9 @@ module.exports = function part1(pres) {
         { tag: "①", head: "믿게 하려 함", body: "하나님의 아들\n그리스도이심을 믿도록" },
         { tag: "②", head: "생명을 얻게 하려 함", body: "그 이름을 힘입어\n생명을 얻도록" },
       ],
-      { y: 1.7, h: 2.2, cols: 2, headSize: 22, bodySize: 18 }
+      { y: 1.68, h: 2.2, cols: 2, headSize: 22, bodySize: 18 }
     );
-    subhead(s, pres, { y: 4.0, tag: "뜻", text: "그러면 이 말들은 각각 무슨 뜻인가" });
+    subhead(s, pres, { y: 4.12, tag: "뜻", text: "그러면 이 말들은 각각 무슨 뜻인가" });
     cardGrid(
       s,
       pres,
@@ -293,7 +293,7 @@ module.exports = function part1(pres) {
         { tag: "20", head: "그리스도", body: "‘기름부음 받은 자’\n왕 · 제사장 · 선지자" },
         { tag: "21", head: "믿는다는 것", body: "죄 사함 · 구원\n하나님의 자녀가 됨" },
       ],
-      { y: 4.5, h: 2.2, cols: 3, headSize: 21, bodySize: 17 }
+      { y: 4.6, h: 2.2, cols: 3, headSize: 21, bodySize: 17 }
     );
   }
 
