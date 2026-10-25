@@ -120,31 +120,43 @@ module.exports = function orientation(pres) {
         { head: "성적", body: "출석 60% · 과제 30%\n시험 10%" },
         { head: "출석", body: "결석 2회까지 허용\n지각 20분 2회 = 결석 1회" },
       ],
-      { x: M, y: 2.3, w: 6.1, h: 3.8, cols: 2, headSize: 20, bodySize: 16 }
+      { x: M, y: 2.24, w: 6.1, h: 3.8, cols: 2, headSize: 20, bodySize: 16 }
     );
-    keyline(s, pres, { x: M, y: 6.22, w: 6.1, h: 0.6, text: "권장 숙제 · 암송 · 일독 · 예습", fontSize: 17 });
+    keyline(s, pres, { x: M, y: 6.16, w: 6.1, h: 0.6, text: "권장 숙제 · 암송 · 일독 · 예습", fontSize: 17 });
 
     subhead(s, pres, { x: M + 6.33, y: 1.68, w: 6.1, tag: "진행", text: "매주 진행 순서 (PM 8:00~10:00)" });
+    // [시간, 항목, 부연] — 부연이 있으면 두 줄짜리 행이 된다
     const rows = [
       ["8:00", "찬양 · 대표기도"],
+      ["", "조별 소그룹 나눔 1", "과제 체크 · 삶 나눔(가볍게) · 소감문 나눔"],
       ["8:10", "강의 1"],
       ["8:55", "휴식"],
-      ["9:05", "조별 소그룹 나눔"],
+      ["9:05", "조별 소그룹 나눔 2", "전체 나눔"],
       ["9:27", "강의 2"],
       ["9:57", "광고 및 마무리"],
     ];
-    let y = 2.3;
+    let y = 2.24;
     rows.forEach((r, i) => {
-      panel(s, pres, { x: M + 6.33, y, w: 6.1, h: 0.66, fill: i % 2 ? C.background1 : C.background2, shadow: false, name: `tr-${i}`, lineColor: i % 2 ? "EDF1F4" : undefined });
+      const h = r[2] ? 0.8 : 0.54;
+      panel(s, pres, { x: M + 6.33, y, w: 6.1, h, fill: i % 2 ? C.background1 : C.background2, shadow: false, name: `tr-${i}`, lineColor: i % 2 ? "EDF1F4" : undefined });
       s.addText(r[0], {
-        x: M + 6.55, y, w: 1.3, h: 0.66, margin: 0, isTextBox: true,
+        x: M + 6.55, y, w: 1.3, h, margin: 0, isTextBox: true,
         fontSize: 18, bold: true, color: C.accent1, valign: "middle", objectName: `tr-${i}-t`,
       });
-      s.addText(r[1], {
-        x: M + 7.95, y, w: 4.3, h: 0.66, margin: 0, isTextBox: true,
-        fontSize: 18, color: C.text1, valign: "middle", objectName: `tr-${i}-d`,
-      });
-      y += 0.72;
+      s.addText(
+        r[2]
+          ? [
+              { text: r[1], options: { fontSize: 18, color: C.text1, bold: true, breakLine: true } },
+              { text: r[2], options: { fontSize: 15, color: C.accent3 } },
+            ]
+          : r[1],
+        {
+          x: M + 7.95, y, w: 4.3, h, margin: 0, isTextBox: true,
+          fontSize: 18, color: C.text1, valign: "middle", lineSpacingMultiple: 1.2,
+          objectName: `tr-${i}-d`,
+        }
+      );
+      y += h + 0.06;
     });
   }
 
