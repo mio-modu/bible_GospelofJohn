@@ -13,6 +13,7 @@ const PptxGenJS = require("pptxgenjs");
 const { FONT, THEME, defineLayouts, enforceFont } = require("./src/theme");
 const { applyTheme } = require("./src/apply-theme");
 const { flushWarnings } = require("./src/components");
+const { fixEastAsianFont } = require("./src/finalize");
 
 const LESSONS = { "01": require("./src/lessons/lesson01") };
 
@@ -49,17 +50,6 @@ async function build(id) {
     console.warn("");
   }
   console.log(`생성 완료: ${out}  (${pres.slides.length} 슬라이드)`);
-}
-
-/** 테마 fontScheme 의 East Asian 슬롯이 비어 있으면 한글이 기본 글꼴로 떨어진다. */
-async function fixEastAsianFont(deckPath, font) {
-  const JSZip = require(require.resolve("jszip", { paths: [require.resolve("pptxgenjs")] }));
-  const zip = await JSZip.loadAsync(fs.readFileSync(deckPath));
-  const part = "ppt/theme/theme1.xml";
-  const xml = await zip.file(part).async("string");
-  const esc = font.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  zip.file(part, xml.replace(/<a:ea typeface=""\/>/g, `<a:ea typeface="${esc}"/>`));
-  fs.writeFileSync(deckPath, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
 }
 
 build(process.argv[2] || "01").catch((e) => {
