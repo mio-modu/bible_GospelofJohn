@@ -36,7 +36,8 @@ async function build(id) {
 
   const outDir = path.join(__dirname, "dist");
   fs.mkdirSync(outDir, { recursive: true });
-  const out = path.join(outDir, lesson.fileName);
+  const flag = process.argv.indexOf("--out");
+  const out = flag > -1 ? process.argv[flag + 1] : path.join(outDir, lesson.fileName);
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME); // pptxgenjs 는 테마 색을 쓰지 못하므로 사후 주입
   await fixEastAsianFont(out, FONT); // 테마의 빈 <a:ea> 를 채워 한글이 대체 글꼴로 빠지지 않게
