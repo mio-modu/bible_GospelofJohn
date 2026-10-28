@@ -299,8 +299,15 @@ function subhead(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, tag,
 }
 
 /** 한 줄 핵심 요약 띠 (먹색 바탕 + 금색 글씨) */
-function keyline(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 0.62, text, fontSize = 20.5, name = "keyline" }) {
+function keyline(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, h = 0.62, text, fontSize = 20.5, after, name = "keyline" }) {
   const C = pres.SchemeColor;
+  // after: 앞 요소가 끝난 y. 본문이 길어지면 띠가 글자를 덮으므로 그 아래로 밀어 준다.
+  if (after != null) y = Math.max(y || 0, after + 0.26);
+  if (y + h > LAYOUT.BODY_BOTTOM) {
+    const need = textHeight(text, w - 0.6, fontSize, 1.3) + 0.3;
+    h = LAYOUT.BODY_BOTTOM - y;
+    if (h < need) warn(`keyline[${name}] 띠 높이가 ${(need - h).toFixed(2)}" 모자랍니다: "${String(text).slice(0, 24)}…"`, slide);
+  }
   panel(slide, pres, { x, y, w, h, fill: C.text2, radius: 0.1, shadow: false, name });
   slide.addText(text, {
     x: x + 0.3, y, w: w - 0.6, h, margin: 0, isTextBox: true,
@@ -332,4 +339,91 @@ function headRow(pres, labels) {
   }));
 }
 
-module.exports = { badge, panel, cardGrid, bullets, scripture, flow, compare, stats, subhead, keyline, tableOpts, headRow, textHeight, warn, flushWarnings };
+/**
+ * 큰 한 문장 — 여백을 넉넉히 두고 굵게. 담백한 슬라이드의 주역.
+ * 카드도 띠도 없이 글자만으로 승부한다.
+ */
+function statement(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, text, sub, ref, size = 34, dark = false, align = "left", name = "stmt" }) {
+  const C = pres.SchemeColor;
+  const h = textHeight(text, w, size, 1.34);
+  slide.addText(text, {
+    x, y, w, h, margin: 0, isTextBox: true, align,
+    fontSize: size, bold: true, color: dark ? C.background1 : C.text1,
+    lineSpacingMultiple: 1.34, valign: "top", objectName: `${name}-text`,
+  });
+  let ny = y + h + 0.22;
+  if (sub) {
+    const sh = textHeight(sub, w, size * 0.56, 1.3);
+    slide.addText(sub, {
+      x, y: ny, w, h: sh, margin: 0, isTextBox: true, align,
+      fontSize: Math.round(size * 0.56), color: dark ? C.accent6 : C.accent3,
+      lineSpacingMultiple: 1.3, valign: "top", objectName: `${name}-sub`,
+    });
+    ny += sh + 0.16;
+  }
+  if (ref) {
+    slide.addText(ref, {
+      x, y: ny, w, h: 0.44, margin: 0, isTextBox: true, align,
+      fontSize: Math.round(size * 0.5), bold: true, color: C.accent1,
+      objectName: `${name}-ref`,
+    });
+    ny += 0.5;
+  }
+  return ny;
+}
+
+/**
+ * 가로줄로만 나눈 목록 — 카드 배경 없이 얇은 선으로 구분한다.
+ * items: [{ tag, head, body }]
+ */
+function rows(slide, pres, items, opts = {}) {
+  const C = pres.SchemeColor;
+  const {
+    x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, rowH,
+    tagW = 1.5, headSize = 22, bodySize = 18, gap = 0.1, dark = false, name = "rows",
+  } = opts;
+  const headColor = dark ? C.background1 : C.text1;
+  const bodyColor = dark ? C.accent6 : C.accent3;
+  let cy = y;
+  items.forEach((it, i) => {
+    const bw = w - (it.tag !== undefined ? tagW : 0);
+    const bx = x + (it.tag !== undefined ? tagW : 0);
+    const hh = textHeight(it.head, bw, headSize, 1.26);
+    const bh = it.body ? textHeight(it.body, bw, bodySize, 1.26) : 0;
+    const h = rowH || hh + (bh ? bh + 0.08 : 0) + gap * 2;
+    if (it.tag !== undefined) {
+      slide.addText(String(it.tag), {
+        x, y: cy + gap, w: tagW - 0.2, h: hh, margin: 0, isTextBox: true,
+        fontSize: headSize, bold: true, color: C.accent1, valign: "top",
+        objectName: `${name}-${i}-tag`,
+      });
+    }
+    slide.addText(it.head, {
+      x: bx, y: cy + gap, w: bw, h: hh, margin: 0, isTextBox: true,
+      fontSize: headSize, bold: true, color: headColor, valign: "top",
+      objectName: `${name}-${i}-head`,
+    });
+    if (it.body) {
+      slide.addText(it.body, {
+        x: bx, y: cy + gap + hh + 0.08, w: bw, h: bh, margin: 0, isTextBox: true,
+        fontSize: bodySize, color: bodyColor, lineSpacingMultiple: 1.26, valign: "top",
+        objectName: `${name}-${i}-body`,
+      });
+    }
+    if (i < items.length - 1) {
+      slide.addShape(pres.ShapeType.rect, {
+        x, y: cy + h, w, h: 0.012,
+        fill: { color: dark ? "2A3F55" : "E4E9EE" },
+        line: { type: "none" },
+        objectName: `${name}-${i}-rule`,
+      });
+    }
+    cy += h + 0.04;
+  });
+  if (cy > LAYOUT.BODY_BOTTOM + 0.02) {
+    warn(`rows[${name}] 목록이 본문 하한선을 ${(cy - LAYOUT.BODY_BOTTOM).toFixed(2)}" 넘칩니다`, slide);
+  }
+  return cy;
+}
+
+module.exports = { badge, panel, cardGrid, bullets, scripture, flow, compare, stats, subhead, keyline, statement, rows, tableOpts, headRow, textHeight, warn, flushWarnings };

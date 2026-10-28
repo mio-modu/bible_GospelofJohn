@@ -53,7 +53,9 @@ const FOOTER_TEXT = "요한복음 OBC · 제1강 영광을 만나기 위한 준�
 /** 레이아웃(= PowerPoint 슬라이드 레이아웃) 정의 */
 const HEX_FOOT = { dark: THEME.colors.accent3, light: THEME.colors.accent4 };
 
-function defineLayouts(pres) {
+function defineLayouts(pres, opts = {}) {
+  const TITLE = opts.titleSize || 36; // 2강처럼 더 굵직하게 가려면 키운다
+  const FOOT = opts.footer || FOOTER_TEXT;
   const C = pres.SchemeColor;
   const M = LAYOUT.MARGIN;
 
@@ -62,7 +64,7 @@ function defineLayouts(pres) {
   const footer = (dark) => [
     {
       text: {
-        text: FOOTER_TEXT,
+        text: FOOT,
         options: {
           x: M, y: 6.97, w: 8, h: 0.3, margin: 0, isTextBox: true, fontFace: FONT,
           fontSize: 11, color: dark ? C.accent3 : C.accent4, valign: "middle",
@@ -157,7 +159,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 36, bold: true, color: C.text1, valign: "middle", align: "left",
+            margin: 0, fontSize: TITLE, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
         },
@@ -187,7 +189,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 36, bold: true, color: C.background1, valign: "middle", align: "left",
+            margin: 0, fontSize: TITLE, bold: true, color: C.background1, valign: "middle", align: "left",
           },
           text: "",
         },
@@ -258,7 +260,7 @@ function defineLayouts(pres) {
           options: {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
-            margin: 0, fontSize: 36, bold: true, color: C.text1, valign: "middle", align: "left",
+            margin: 0, fontSize: TITLE, bold: true, color: C.text1, valign: "middle", align: "left",
           },
           text: "",
         },

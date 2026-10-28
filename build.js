@@ -3,7 +3,7 @@
  * 강의안 PPTX 빌더
  *
  *   node build.js        # 1강 생성
- *   node build.js 01     # 특정 강 생성
+ *   node build.js 02     # 특정 강 생성
  *
  * 결과물은 dist/ 에 생성된다.
  */
@@ -15,7 +15,10 @@ const { applyTheme } = require("./src/apply-theme");
 const { flushWarnings } = require("./src/components");
 const { fixEastAsianFont } = require("./src/finalize");
 
-const LESSONS = { "01": require("./src/lessons/lesson01") };
+const LESSONS = {
+  "01": require("./src/lessons/lesson01"),
+  "02": require("./src/lessons/lesson02"),
+};
 
 async function build(id) {
   const lesson = LESSONS[id];
@@ -31,7 +34,7 @@ async function build(id) {
   pres.title = `요한복음 제${Number(id)}강 ${lesson.title}`;
   pres.subject = lesson.subject;
 
-  defineLayouts(pres);
+  defineLayouts(pres, lesson.layoutOpts || {});
   enforceFont(pres, FONT); // 모든 글자를 맑은 고딕으로 고정
   lesson.parts.forEach((part) => part(pres));
 
