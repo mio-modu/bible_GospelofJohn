@@ -29,7 +29,7 @@ async function main() {
   pres.author = "박성은 목사";
   pres.title = mod.title || name;
 
-  defineLayouts(pres);
+  defineLayouts(pres, mod.layoutOpts || {});
   enforceFont(pres, FONT);
   pres.addSection({ title: mod.section || mod.title || name });
   mod.slides.forEach((build) => build(pres));

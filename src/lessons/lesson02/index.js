@@ -2,7 +2,7 @@
  * 제2강 — 영광이 드러나다 (요 1:19~4:54)
  *
  * 순서 : 여는 장 → 세례 요한의 증언 → 첫 제자들 → 가나와 성전
- *        → 니고데모(거듭남) → 사마리아(예배) → 마무리
+ *        → 소그룹 나눔Ⅱ → 니고데모(거듭남) → 사마리아(예배) → 마무리
  *
  * 이 덱의 원칙 : 슬라이드에는 핵심 문구만, 강의 설명은 전부 발표자 노트에.
  */
@@ -16,6 +16,7 @@ module.exports = {
     require("./00-open"),
     require("./10-baptist"),
     require("./20-disciples"),
+    require("./25-share"),
     require("./30-cana-temple"),
     require("./40-nicodemus"),
     require("./50-samaritan"),
