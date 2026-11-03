@@ -10,14 +10,15 @@
 const path = require("path");
 const fs = require("fs");
 const PptxGenJS = require("pptxgenjs");
-const { FONT, THEME, defineLayouts, enforceFont } = require("./src/theme");
+const { FONT, THEME, useTheme, defineLayouts, enforceFont } = require("./src/theme");
 const { applyTheme } = require("./src/apply-theme");
 const { flushWarnings } = require("./src/components");
-const { fixEastAsianFont } = require("./src/finalize");
+const { fixEastAsianFont, setNotesFontSize } = require("./src/finalize");
 
 const LESSONS = {
   "01": require("./src/lessons/lesson01"),
   "02": require("./src/lessons/lesson02"),
+  "03": require("./src/lessons/lesson03"),
 };
 
 async function build(id) {
@@ -26,6 +27,8 @@ async function build(id) {
     console.error(`알 수 없는 강의 번호: ${id} (가능: ${Object.keys(LESSONS).join(", ")})`);
     process.exit(2);
   }
+
+  useTheme(lesson.palette || "glory"); // 레이아웃을 만들기 전에 팔레트를 정한다
 
   const pres = new PptxGenJS();
   pres.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in — 반드시 슬라이드 추가 전에 설정
@@ -45,6 +48,7 @@ async function build(id) {
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME); // pptxgenjs 는 테마 색을 쓰지 못하므로 사후 주입
   await fixEastAsianFont(out, FONT); // 테마의 빈 <a:ea> 를 채워 한글이 대체 글꼴로 빠지지 않게
+  await setNotesFontSize(out, lesson.notesSize || 18, FONT); // 강의 중에 읽을 수 있게 발표자 노트를 키운다
 
   const warnings = flushWarnings();
   if (warnings.length) {

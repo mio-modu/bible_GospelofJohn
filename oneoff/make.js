@@ -10,9 +10,9 @@
 const path = require("path");
 const fs = require("fs");
 const PptxGenJS = require("pptxgenjs");
-const { FONT, THEME, defineLayouts, enforceFont } = require("../src/theme");
+const { FONT, THEME, useTheme, defineLayouts, enforceFont } = require("../src/theme");
 const { applyTheme } = require("../src/apply-theme");
-const { fixEastAsianFont } = require("../src/finalize");
+const { fixEastAsianFont, setNotesFontSize } = require("../src/finalize");
 const { flushWarnings } = require("../src/components");
 
 async function main() {
@@ -22,6 +22,8 @@ async function main() {
     process.exit(2);
   }
   const mod = require(path.join(__dirname, name));
+
+  useTheme(mod.palette || "glory");
 
   const pres = new PptxGenJS();
   pres.layout = "LAYOUT_WIDE";
@@ -40,6 +42,7 @@ async function main() {
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME);
   await fixEastAsianFont(out, FONT);
+  await setNotesFontSize(out, mod.notesSize || 18, FONT);
 
   const warnings = flushWarnings();
   if (warnings.length) {

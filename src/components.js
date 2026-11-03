@@ -351,7 +351,7 @@ function statement(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, te
     fontSize: size, bold: true, color: dark ? C.background1 : C.text1,
     lineSpacingMultiple: 1.34, valign: "top", objectName: `${name}-text`,
   });
-  let ny = y + h + 0.22;
+  let ny = y + h + 0.32;
   if (sub) {
     const sh = textHeight(sub, w, size * 0.56, 1.3);
     slide.addText(sub, {
@@ -359,7 +359,7 @@ function statement(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, te
       fontSize: Math.round(size * 0.56), color: dark ? C.accent6 : C.accent3,
       lineSpacingMultiple: 1.3, valign: "top", objectName: `${name}-sub`,
     });
-    ny += sh + 0.16;
+    ny += sh + 0.24;
   }
   if (ref) {
     slide.addText(ref, {
@@ -368,6 +368,9 @@ function statement(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, te
       objectName: `${name}-ref`,
     });
     ny += 0.5;
+  }
+  if (ny > LAYOUT.BODY_BOTTOM + 0.02) {
+    warn(`statement[${name}] 본문 하한선을 ${(ny - LAYOUT.BODY_BOTTOM).toFixed(2)}" 넘칩니다: "${String(text).slice(0, 24)}…"`, slide);
   }
   return ny;
 }
@@ -413,7 +416,7 @@ function rows(slide, pres, items, opts = {}) {
     if (i < items.length - 1) {
       slide.addShape(pres.ShapeType.rect, {
         x, y: cy + h, w, h: 0.012,
-        fill: { color: dark ? "2A3F55" : "E4E9EE" },
+        fill: { color: dark ? HEX.ruleDark : HEX.rule },
         line: { type: "none" },
         objectName: `${name}-${i}-rule`,
       });
