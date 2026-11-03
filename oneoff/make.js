@@ -12,7 +12,7 @@ const fs = require("fs");
 const PptxGenJS = require("pptxgenjs");
 const { FONT, THEME, useTheme, defineLayouts, enforceFont } = require("../src/theme");
 const { applyTheme } = require("../src/apply-theme");
-const { fixEastAsianFont, setNotesFontSize } = require("../src/finalize");
+const { finalizeDeck } = require("../src/finalize");
 const { flushWarnings } = require("../src/components");
 
 async function main() {
@@ -41,8 +41,7 @@ async function main() {
   const out = path.join(outDir, `${mod.fileName || name}.pptx`);
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME);
-  await fixEastAsianFont(out, FONT);
-  await setNotesFontSize(out, mod.notesSize || 24, FONT);
+  await finalizeDeck(out, { font: FONT, notesSize: mod.notesSize || 24 });
 
   const warnings = flushWarnings();
   if (warnings.length) {

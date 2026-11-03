@@ -14,7 +14,7 @@ const PptxGenJS = require("pptxgenjs");
 const { FONT, THEME, useTheme, defineLayouts, enforceFont } = require("./src/theme");
 const { applyTheme } = require("./src/apply-theme");
 const { flushWarnings } = require("./src/components");
-const { fixEastAsianFont, setNotesFontSize } = require("./src/finalize");
+const { finalizeDeck } = require("./src/finalize");
 
 const LESSONS = {
   "01": require("./src/lessons/lesson01"),
@@ -55,8 +55,7 @@ async function build(id) {
   const out = flag > -1 ? process.argv[flag + 1] : path.join(outDir, lesson.fileName);
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME); // pptxgenjs 는 테마 색을 쓰지 못하므로 사후 주입
-  await fixEastAsianFont(out, FONT); // 테마의 빈 <a:ea> 를 채워 한글이 대체 글꼴로 빠지지 않게
-  await setNotesFontSize(out, notesPt(lesson), FONT); // 강의 중에 읽을 수 있게 발표자 노트를 키운다
+  const fin = await finalizeDeck(out, { font: FONT, notesSize: notesPt(lesson) });
 
   const warnings = flushWarnings();
   if (warnings.length) {
@@ -64,6 +63,7 @@ async function build(id) {
     warnings.forEach((w) => console.warn("  - " + w));
     console.warn("");
   }
+  if (fin.idFixes) console.log(`도형 ID 충돌 ${fin.idFixes}건 정리`);
   console.log(`생성 완료: ${out}  (${pres.slides.length} 슬라이드, 노트 ${notesPt(lesson)}pt)`);
 }
 
