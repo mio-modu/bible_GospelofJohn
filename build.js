@@ -4,6 +4,7 @@
  *
  *   node build.js        # 1강 생성
  *   node build.js 02     # 특정 강 생성
+ *   node build.js 03 --notes 28   # 발표자 노트 글자 크기를 바꿔 생성
  *
  * 결과물은 dist/ 에 생성된다.
  */
@@ -20,6 +21,13 @@ const LESSONS = {
   "02": require("./src/lessons/lesson02"),
   "03": require("./src/lessons/lesson03"),
 };
+
+/** 발표자 노트 글자 크기 (pt). 기본 24, 강별 설정이나 --notes 로 바꾼다. */
+function notesPt(lesson) {
+  const flag = process.argv.indexOf("--notes");
+  if (flag > -1 && process.argv[flag + 1]) return Number(process.argv[flag + 1]);
+  return lesson.notesSize || 24;
+}
 
 async function build(id) {
   const lesson = LESSONS[id];
@@ -48,7 +56,7 @@ async function build(id) {
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME); // pptxgenjs 는 테마 색을 쓰지 못하므로 사후 주입
   await fixEastAsianFont(out, FONT); // 테마의 빈 <a:ea> 를 채워 한글이 대체 글꼴로 빠지지 않게
-  await setNotesFontSize(out, lesson.notesSize || 18, FONT); // 강의 중에 읽을 수 있게 발표자 노트를 키운다
+  await setNotesFontSize(out, notesPt(lesson), FONT); // 강의 중에 읽을 수 있게 발표자 노트를 키운다
 
   const warnings = flushWarnings();
   if (warnings.length) {
@@ -56,7 +64,7 @@ async function build(id) {
     warnings.forEach((w) => console.warn("  - " + w));
     console.warn("");
   }
-  console.log(`생성 완료: ${out}  (${pres.slides.length} 슬라이드)`);
+  console.log(`생성 완료: ${out}  (${pres.slides.length} 슬라이드, 노트 ${notesPt(lesson)}pt)`);
 }
 
 build(process.argv[2] || "01").catch((e) => {

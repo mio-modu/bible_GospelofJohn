@@ -13,7 +13,7 @@ module.exports = {
   fileName: "요한복음_3강_영광을_드러내시다.pptx",
   subject: "요한복음 제3과 · 요한복음 4:43~6:71",
   palette: "lumen",
-  notesSize: 18,
+  notesSize: 24, // 강의 중 메모판에서 읽을 수 있는 크기
   layoutOpts: { titleSize: 38, footer: "요한복음 OBC · 제3강 영광을 드러내시다" },
   parts: [
     require("./00-open"),

@@ -42,7 +42,7 @@ async function main() {
   await pres.writeFile({ fileName: out });
   await applyTheme(out, THEME);
   await fixEastAsianFont(out, FONT);
-  await setNotesFontSize(out, mod.notesSize || 18, FONT);
+  await setNotesFontSize(out, mod.notesSize || 24, FONT);
 
   const warnings = flushWarnings();
   if (warnings.length) {
