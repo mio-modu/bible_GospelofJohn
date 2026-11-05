@@ -36,7 +36,8 @@ async function build(id) {
     process.exit(2);
   }
 
-  useTheme(lesson.palette || "glory"); // 레이아웃을 만들기 전에 팔레트를 정한다
+  const pFlag = process.argv.indexOf("--palette");
+  useTheme(pFlag > -1 ? process.argv[pFlag + 1] : lesson.palette || "glory"); // 레이아웃 전에 팔레트를 정한다
 
   const pres = new PptxGenJS();
   pres.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in — 반드시 슬라이드 추가 전에 설정

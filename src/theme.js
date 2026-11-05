@@ -52,6 +52,41 @@ const THEMES = {
     ruleDark: "57503F",
     shadow: "3D3831",
   },
+  ink: {
+    name: "Ink - Gospel of John",
+    colors: {
+      dk1: "1B232E", lt1: "FAFBFC", dk2: "141C27", lt2: "EDF0F4",
+      accent1: "B18E4C", accent2: "1F3A52", accent3: "64768A", accent4: "AFB9C3",
+      accent5: "C2A05A", accent6: "E3D2A8", hlink: "1F3A52", folHlink: "64768A",
+    },
+    rule: "E3E8ED", ruleDark: "2B3B4D", shadow: "141C27",
+  },
+  slate: {
+    name: "Slate - Gospel of John",
+    colors: {
+      dk1: "1E2226", // 본문 - 딥 그래파이트
+      lt1: "FBFBFA", // 배경 - 뉴트럴 오프화이트
+      dk2: "23282D", // 어두운 슬라이드 - 차콜
+      lt2: "EFF1F2", // 패널 - 쿨 라이트 그레이
+      accent1: "9A8046", // 샴페인 골드 - 강조 1순위
+      accent2: "2B3740", // 나눔 슬라이드 - 차콜보다 살짝 푸른 쪽
+      accent3: "6E767E", // 쿨 그레이 - 보조 설명
+      accent4: "B2B8BE", // 캡션 / 푸터
+      accent5: "C0A463", // 라이트 샴페인 - 어두운 면의 큰 숫자
+      accent6: "E8E2D3", // 크림 - 어두운 배경 위 본문
+      hlink: "2B3740", folHlink: "6E767E",
+    },
+    rule: "E4E7E9", ruleDark: "3B444C", shadow: "23282D",
+  },
+  forest: {
+    name: "Forest - Gospel of John",
+    colors: {
+      dk1: "1F2621", lt1: "FAFAF7", dk2: "22312A", lt2: "EDF0EC",
+      accent1: "9C833F", accent2: "2C4036", accent3: "6B7770", accent4: "AFB6B0",
+      accent5: "B99F57", accent6: "E2E6D7", hlink: "2C4036", folHlink: "6B7770",
+    },
+    rule: "E2E7E1", ruleDark: "3A4C42", shadow: "22312A",
+  },
 };
 
 const THEME = {

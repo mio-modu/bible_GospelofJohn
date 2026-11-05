@@ -1,5 +1,5 @@
 /** 제3강 · 중간 소그룹 나눔 — 존재의 무게 (선포 단락 뒤, 전체의 절반 지점) */
-const { LAYOUT } = require("../../theme");
+const { LAYOUT, HEX } = require("../../theme");
 
 module.exports = function share(pres) {
   const C = pres.SchemeColor;
@@ -16,7 +16,7 @@ module.exports = function share(pres) {
   });
 
   s.addShape(pres.ShapeType.rect, {
-    x: M, y: 4.64, w: 2.2, h: 0.028, fill: { color: "B18E4C" }, line: { type: "none" },
+    x: M, y: 4.64, w: 2.2, h: 0.028, fill: { color: HEX.accent5 }, line: { type: "none" },
     objectName: "rule",
   });
 
