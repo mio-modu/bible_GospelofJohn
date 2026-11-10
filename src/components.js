@@ -376,6 +376,67 @@ function statement(slide, pres, { x = LAYOUT.MARGIN, y, w = LAYOUT.CONTENT_W, te
 }
 
 /**
+ * 말씀 전용 슬라이드의 본문 블록.
+ * 화면에 구절만 크게 띄우는 장에 쓴다 — 절 번호, (선택) 도입 한 줄, 본문, 그리고 '=>' 해설.
+ * 강의 중에 한 번 숨을 고르게 하는 장치라서 다른 요소는 일부러 넣지 않는다.
+ */
+function verse(slide, pres, opts = {}) {
+  const C = pres.SchemeColor;
+  const {
+    x = LAYOUT.MARGIN, y = 1.78, w = LAYOUT.CONTENT_W,
+    ref, lead, text, notes = [], size = 26, refSize = 30,
+    dark = true, name = "verse",
+  } = opts;
+  const bodyColor = dark ? C.background1 : C.text1;
+  let cy = y;
+
+  if (ref) {
+    slide.addText(ref, {
+      x, y: cy, w, h: 0.56, margin: 0, isTextBox: true,
+      fontSize: refSize, bold: true, color: C.accent1, valign: "top",
+      objectName: `${name}-ref`,
+    });
+    cy += 0.68;
+  }
+  if (lead) {
+    const lh = textHeight(lead, w, size - 5, 1.3);
+    slide.addText(lead, {
+      x, y: cy, w, h: lh, margin: 0, isTextBox: true,
+      fontSize: size - 5, color: dark ? C.accent6 : C.accent3, valign: "top",
+      objectName: `${name}-lead`,
+    });
+    cy += lh + 0.16;
+  }
+
+  const th = textHeight(text, w, size, 1.42);
+  slide.addText(text, {
+    x, y: cy, w, h: th, margin: 0, isTextBox: true,
+    fontSize: size, bold: true, color: bodyColor, lineSpacingMultiple: 1.42,
+    valign: "top", objectName: `${name}-text`,
+  });
+  cy += th + 0.3;
+
+  notes.forEach((n, i) => {
+    const nh = textHeight(n, w - 0.5, size - 7, 1.3);
+    slide.addText("▸", {
+      x, y: cy, w: 0.4, h: 0.4, margin: 0, isTextBox: true,
+      fontSize: size - 9, color: C.accent1, valign: "top", objectName: `${name}-mark-${i}`,
+    });
+    slide.addText(n, {
+      x: x + 0.42, y: cy, w: w - 0.42, h: nh, margin: 0, isTextBox: true,
+      fontSize: size - 7, color: dark ? C.accent6 : C.accent3,
+      lineSpacingMultiple: 1.3, valign: "top", objectName: `${name}-note-${i}`,
+    });
+    cy += nh + 0.14;
+  });
+
+  if (cy > LAYOUT.BODY_BOTTOM + 0.02) {
+    warn(`verse[${name}] 본문 하한선을 ${(cy - LAYOUT.BODY_BOTTOM).toFixed(2)}" 넘칩니다: "${String(text).slice(0, 24)}…"`, slide);
+  }
+  return cy;
+}
+
+/**
  * 가로줄로만 나눈 목록 — 카드 배경 없이 얇은 선으로 구분한다.
  * items: [{ tag, head, body }]
  */
@@ -429,4 +490,4 @@ function rows(slide, pres, items, opts = {}) {
   return cy;
 }
 
-module.exports = { badge, panel, cardGrid, bullets, scripture, flow, compare, stats, subhead, keyline, statement, rows, tableOpts, headRow, textHeight, warn, flushWarnings };
+module.exports = { badge, panel, cardGrid, bullets, scripture, flow, compare, stats, subhead, keyline, statement, verse, rows, tableOpts, headRow, textHeight, warn, flushWarnings };
