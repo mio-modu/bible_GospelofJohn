@@ -353,12 +353,24 @@ function defineLayouts(pres, opts = {}) {
  * addSlide 를 감싸서 addText/addTable 에 fontFace 를 기본값으로 넣어,
  * 테마 상속에 기대지 않고 런(run)마다 맑은 고딕이 직접 박히게 한다.
  */
+/**
+ * 발표자 노트는 서식 없는 평문이다. 마크다운 강조 기호를 쓰면 화면에 **처럼 그대로 찍힌다.
+ * 글을 쓰다 보면 습관처럼 붙으므로 넣는 길목에서 한 번 걸러 낸다.
+ */
+function plainText(s) {
+  return String(s)
+    .replace(/(\*\*|__)(?=\S)([\s\S]*?\S)\1/g, "$2") // **굵게**, __굵게__
+    .replace(/`([^`]+)`/g, "$1"); // `코드`
+}
+
 function enforceFont(pres, font = FONT) {
   const addSlide = pres.addSlide.bind(pres);
   pres.addSlide = (opts) => {
     const slide = addSlide(opts);
     const addText = slide.addText.bind(slide);
     const addTable = slide.addTable.bind(slide);
+    const addNotes = slide.addNotes.bind(slide);
+    slide.addNotes = (text) => addNotes(plainText(text));
     slide.addText = (text, o = {}) => {
       const runs = Array.isArray(text)
         ? text.map((r) => (r && typeof r === "object" && r.text !== undefined ? { ...r, options: { fontFace: font, ...(r.options || {}) } } : r))
@@ -379,4 +391,4 @@ function enforceFont(pres, font = FONT) {
   };
 }
 
-module.exports = { FONT, THEME, THEMES, HEX, LAYOUT, SHADOW, FOOTER_TEXT, useTheme, defineLayouts, enforceFont };
+module.exports = { FONT, THEME, THEMES, HEX, LAYOUT, SHADOW, FOOTER_TEXT, useTheme, defineLayouts, enforceFont, plainText };
