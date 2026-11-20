@@ -21,6 +21,7 @@ const LESSONS = {
   "02": require("./src/lessons/lesson02"),
   "03": require("./src/lessons/lesson03"),
   "04": require("./src/lessons/lesson04"),
+  "05": require("./src/lessons/lesson05"),
 };
 
 /** 발표자 노트 글자 크기 (pt). 기본 24, 강별 설정이나 --notes 로 바꾼다. */
