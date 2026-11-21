@@ -226,7 +226,9 @@ function defineLayouts(pres, opts = {}) {
     ],
   });
 
-  // 3. 기본 콘텐츠 (흰 배경) - 대부분의 슬라이드가 이 레이아웃 위에 올라간다
+  // 3. 기본 콘텐츠 - 대부분의 슬라이드가 이 레이아웃 위에 올라간다.
+  //    본문 자리틀은 두지 않는다. 내용은 components 가 직접 상자를 그려 넣고,
+  //    비어 있는 자리틀은 편집 화면에 "텍스트를 입력하십시오" 안내문으로 남는다.
   pres.defineSlideMaster({
     title: "CONTENT",
     background: { color: C.background1 },
@@ -237,16 +239,6 @@ function defineLayouts(pres, opts = {}) {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
             margin: 0, fontSize: TITLE, bold: true, color: C.text1, valign: "middle", align: "left",
-          },
-          text: "",
-        },
-      },
-      {
-        placeholder: {
-          options: {
-            name: "body", type: "body",
-            fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
-            margin: 0, fontSize: 18, color: C.text1,
           },
           text: "",
         },
@@ -267,16 +259,6 @@ function defineLayouts(pres, opts = {}) {
             name: "title", type: "title",
             fontFace: FONT, x: M, y: LAYOUT.TITLE_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.TITLE_H,
             margin: 0, fontSize: TITLE, bold: true, color: C.background1, valign: "middle", align: "left",
-          },
-          text: "",
-        },
-      },
-      {
-        placeholder: {
-          options: {
-            name: "body", type: "body",
-            fontFace: FONT, x: M, y: LAYOUT.BODY_Y, w: LAYOUT.CONTENT_W, h: LAYOUT.BODY_H,
-            margin: 0, fontSize: 18, color: C.accent6,
           },
           text: "",
         },
