@@ -73,6 +73,14 @@ function growNotesMaster(xml, sz) {
   const lvls = [1, 2, 3, 4, 5]
     .map((n) => `<a:lvl${n}pPr><a:defRPr sz="${sz}"/></a:lvl${n}pPr>`)
     .join("");
+  // 노트 슬라이드는 본문을 idx="1", 슬라이드 번호를 idx="10" 으로 참조한다.
+  // 마스터에서 다른 자리틀이 그 번호를 쓰고 있으면 PowerPoint 가 자리틀 집합을
+  // 통째로 인식하지 못한다 (노트 마스터 탭의 '개체 틀' 체크가 모두 꺼진다).
+  xml = xml
+    .replace(/<p:ph type="dt" idx="1"\/>/, '<p:ph type="dt" idx="20"/>')
+    .replace(/<p:ph type="ftr" sz="quarter" idx="4"\/>/, '<p:ph type="ftr" sz="quarter" idx="21"/>')
+    .replace(/<p:ph type="sldNum" sz="quarter" idx="5"\/>/, '<p:ph type="sldNum" sz="quarter" idx="10"/>');
+
   return xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
     if (!sp.includes('<p:ph type="body"')) return sp;
     return sp
