@@ -20,7 +20,7 @@ module.exports = {
   fileName: "요한복음_5강_영광이신_하나님.pptx",
   subject: "요한복음 제5과 · 요한복음 11~12장",
   palette: "slate",
-  notesSize: 40, // 메모판에서 강의하며 읽는 크기
+  notesSize: 48, // 메모판에서 강의하며 읽는 크기
   layoutOpts: { titleSize: 38, footer: "요한복음 OBC · 제5강 영광이신 하나님" },
   parts: [
     require("./00-open"),
