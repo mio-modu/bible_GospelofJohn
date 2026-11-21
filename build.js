@@ -28,7 +28,7 @@ const LESSONS = {
 function notesPt(lesson) {
   const flag = process.argv.indexOf("--notes");
   if (flag > -1 && process.argv[flag + 1]) return Number(process.argv[flag + 1]);
-  return lesson.notesSize || 24;
+  return lesson.notesSize || 26;
 }
 
 async function build(id) {

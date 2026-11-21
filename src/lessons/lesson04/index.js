@@ -15,7 +15,7 @@ module.exports = {
   fileName: "요한복음_4강_영광이신_예수님.pptx",
   subject: "요한복음 제4과 · 요한복음 7~10장",
   palette: "slate",
-  notesSize: 24,
+  notesSize: 26,
   layoutOpts: { titleSize: 38, footer: "요한복음 OBC · 제4강 영광이신 예수님" },
   parts: [
     require("./00-open"),

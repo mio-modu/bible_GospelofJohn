@@ -40,13 +40,45 @@ function dedupeShapeIds(xml) {
   return { xml: out, fixed };
 }
 
-/** 노트 런에 글자 크기를 박는다. 자식 요소는 건드리지 않고 속성만 넣는다. */
+/** <a:bodyPr> 가 어떤 모양이든 자동 축소를 끈 여는 태그로 바꾼다. */
+function killAutofit(tag) {
+  const attrs = tag.replace(/^<a:bodyPr/, "").replace(/\/?>$/, "");
+  return `<a:bodyPr${attrs}><a:noAutofit/>` + (tag.endsWith("/>") ? "</a:bodyPr>" : "");
+}
+
+/** 노트 런에 글자 크기를 박고, 자동 축소를 끈다. */
 function sizeNotesRuns(xml, sz) {
   return xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
     if (!sp.includes('<p:ph type="body"')) return sp;
-    return sp.replace(/<a:(rPr|endParaRPr)\b([^>]*?)(\/?)>/g, (m, tag, attrs, close) =>
-      /\bsz="/.test(attrs) ? m : `<a:${tag}${attrs} sz="${sz}"${close}>`
-    );
+    return sp
+      // 글자 크기
+      .replace(/<a:(rPr|endParaRPr)\b([^>]*?)(\/?)>/g, (m, tag, attrs, close) =>
+        /\bsz="/.test(attrs) ? m : `<a:${tag}${attrs} sz="${sz}"${close}>`
+      )
+      // 넘치면 줄이기(자동 축소) 끄기 — 이것 때문에 24pt 가 한 자릿수로 쪼그라든다
+      .replace(/<a:bodyPr\b[^>]*?\/>|<a:bodyPr\b[^>]*?>/, killAutofit);
+  });
+}
+
+/**
+ * 노트 마스터의 본문 상자를 노트 페이지에 맞게 키우고 자동 축소를 끈다.
+ *
+ * pptxgenjs 가 잡아 주는 상자는 6.00" x 3.94" 로, 24pt 기준 300자쯤 들어간다.
+ * 강의 노트는 그보다 길어서 PowerPoint 가 '넘치면 글자 줄이기'로 쪼그라뜨린다.
+ * 메모판 글씨가 한 자릿수 포인트처럼 보이던 원인이 이것이다.
+ */
+function growNotesMaster(xml) {
+  return xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
+    if (!sp.includes('<p:ph type="body"')) return sp;
+    return sp
+      // 노트 슬라이드가 idx="1" 로 참조하므로 마스터도 맞춰 준다
+      .replace(/(<p:ph type="body"[^>]*?)idx="\d+"/, '$1idx="1"')
+      // 0.45" , 4.90"  /  6.60" x 8.10"  — 23.6 → 53.5 제곱인치
+      .replace(
+        /<a:off x="\d+" y="\d+"\/><a:ext cx="\d+" cy="\d+"\/>/,
+        '<a:off x="411480" y="4480560"/><a:ext cx="6035040" cy="7406640"/>'
+      )
+      .replace(/<a:bodyPr\b[^>]*?\/>|<a:bodyPr\b[^>]*?>/, killAutofit);
   });
 }
 
@@ -79,6 +111,7 @@ async function finalizeDeck(deckPath, { font, notesSize = 24 } = {}) {
       xml = xml.replace(/(<p:notesStyle>[\s\S]*?<\/p:notesStyle>)/, (block) =>
         block.replace(/<a:defRPr\b([^>]*?)\bsz="\d+"/g, (m, attrs) => `<a:defRPr${attrs}sz="${sz}"`)
       );
+      xml = growNotesMaster(xml);
     }
 
     // 3. 도형 ID 충돌
