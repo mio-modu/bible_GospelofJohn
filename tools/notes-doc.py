@@ -88,16 +88,18 @@ def main(src, title=None):
     doc = f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><title>{html.escape(deck)} 강의 노트</title>
 <style>
-  @page {{ size: A4; margin: 14mm 14mm 16mm 14mm; }}
+  /* 쪽을 A5 로 줄이고 글씨를 키운다.
+     화면 폭에 맞춰 보면 A4 에 같은 글씨를 넣은 것보다 1.4배쯤 크게 보인다. */
+  @page {{ size: 148mm 210mm; margin: 10mm 9mm 11mm 9mm; }}
   body {{ font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
-          font-size: 17pt; line-height: 1.62; color: #1E2226; }}
-  h1 {{ font-size: 26pt; margin: 0 0 4mm 0; }}
-  .sub {{ font-size: 13pt; color: #6E767E; margin: 0 0 10mm 0; }}
-  h2 {{ font-size: 19pt; margin: 9mm 0 3mm 0; padding-bottom: 2mm;
-        border-bottom: 1.2pt solid #9A8046; page-break-after: avoid; }}
-  h2 .n {{ display: inline-block; min-width: 13mm; color: #9A8046; }}
-  p {{ margin: 0 0 3.2mm 0; }}
-  p.in {{ margin-left: 7mm; color: #3C4248; }}
+          font-size: 22pt; line-height: 1.5; color: #1E2226; }}
+  h1 {{ font-size: 30pt; margin: 0 0 3mm 0; }}
+  .sub {{ font-size: 15pt; color: #6E767E; margin: 0 0 8mm 0; }}
+  h2 {{ font-size: 25pt; margin: 8mm 0 3mm 0; padding-bottom: 2mm;
+        border-bottom: 1.4pt solid #9A8046; page-break-after: avoid; }}
+  h2 .n {{ display: inline-block; min-width: 14mm; color: #9A8046; }}
+  p {{ margin: 0 0 3mm 0; }}
+  p.in {{ margin-left: 6mm; color: #3C4248; }}
 </style></head><body>
 <h1>{html.escape(deck)}</h1>
 <p class="sub">강의 노트 · 슬라이드별 발표자 노트</p>
