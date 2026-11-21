@@ -24,11 +24,12 @@ const LESSONS = {
   "05": require("./src/lessons/lesson05"),
 };
 
-/** 발표자 노트 글자 크기 (pt). 기본 72 — 메모판은 약 50% 로 그려지므로 두 배로 잡는다. 메모판에서 강의하며 읽는 크기. */
+/** 발표자 노트 글자 크기 (pt). 기본 28 — 슬라이드 노트 보기와 발표자 보기 기준.
+ *  편집 화면 메모판에서 강의하며 읽는 크기. */
 function notesPt(lesson) {
   const flag = process.argv.indexOf("--notes");
   if (flag > -1 && process.argv[flag + 1]) return Number(process.argv[flag + 1]);
-  return lesson.notesSize || 72;
+  return lesson.notesSize || 28;
 }
 
 async function build(id) {

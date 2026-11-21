@@ -81,6 +81,12 @@ function growNotesMaster(xml, sz) {
     if (!sp.includes('<p:ph type="body"')) return sp;
     return sp
       .replace(/<a:lstStyle\s*\/>/, `<a:lstStyle>${lvls}</a:lstStyle>`)
+      // 본문 상자를 노트 쪽에 맞게 키운다. '보기 > 슬라이드 노트' 에서
+      // 긴 노트가 쪽 밖으로 잘리지 않게 하려면 필요하다. (0.45",4.90" / 6.60"x8.10")
+      .replace(
+        /<a:off x="\d+" y="\d+"\/><a:ext cx="\d+" cy="\d+"\/>/,
+        '<a:off x="411480" y="4480560"/><a:ext cx="6035040" cy="7406640"/>'
+      )
       .replace(/<a:bodyPr\b[^>]*?\/>|<a:bodyPr\b[^>]*?>/, killAutofit);
   });
 }
