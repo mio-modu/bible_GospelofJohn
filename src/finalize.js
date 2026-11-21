@@ -73,20 +73,14 @@ function growNotesMaster(xml, sz) {
   const lvls = [1, 2, 3, 4, 5]
     .map((n) => `<a:lvl${n}pPr><a:defRPr sz="${sz}"/></a:lvl${n}pPr>`)
     .join("");
-  // 노트 슬라이드는 본문을 idx="1", 슬라이드 번호를 idx="10" 으로 참조한다.
-  // 마스터에서 다른 자리틀이 그 번호를 쓰고 있으면 PowerPoint 가 자리틀 집합을
-  // 통째로 인식하지 못한다 (노트 마스터 탭의 '개체 틀' 체크가 모두 꺼진다).
-  xml = xml
-    .replace(/<p:ph type="dt" idx="1"\/>/, '<p:ph type="dt" idx="20"/>')
-    .replace(/<p:ph type="ftr" sz="quarter" idx="4"\/>/, '<p:ph type="ftr" sz="quarter" idx="21"/>')
-    .replace(/<p:ph type="sldNum" sz="quarter" idx="5"\/>/, '<p:ph type="sldNum" sz="quarter" idx="10"/>');
-
+  // 자리틀 번호(idx)는 건드리지 않는다.
+  // PowerPoint 자신의 노트 마스터도 날짜 1 · 슬라이드그림 2 · 본문 3 ·
+  // 바닥글 4 · 쪽번호 5 를 쓰고, 노트 본문은 번호가 아니라 type 으로 연결된다.
+  // 여기를 손대면 번호가 겹쳐 PowerPoint 가 자리틀 집합을 통째로 놓친다.
   return xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
     if (!sp.includes('<p:ph type="body"')) return sp;
     return sp
       .replace(/<a:lstStyle\s*\/>/, `<a:lstStyle>${lvls}</a:lstStyle>`)
-      // 노트 슬라이드가 idx="1" 로 참조하므로 마스터도 맞춰 준다
-      .replace(/(<p:ph type="body"[^>]*?)idx="\d+"/, '$1idx="1"')
       // 0.45" , 4.90"  /  6.60" x 8.10"  — 23.6 → 53.5 제곱인치
       .replace(
         /<a:off x="\d+" y="\d+"\/><a:ext cx="\d+" cy="\d+"\/>/,
