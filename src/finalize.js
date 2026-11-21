@@ -67,10 +67,16 @@ function sizeNotesRuns(xml, sz) {
  * 강의 노트는 그보다 길어서 PowerPoint 가 '넘치면 글자 줄이기'로 쪼그라뜨린다.
  * 메모판 글씨가 한 자릿수 포인트처럼 보이던 원인이 이것이다.
  */
-function growNotesMaster(xml) {
+function growNotesMaster(xml, sz) {
+  // 자리틀 자체의 글머리 단계별 기본값. PowerPoint 가 메모판을 그릴 때
+  // 노트 마스터의 notesStyle 대신 이쪽을 읽는 경우가 있어 함께 박아 둔다.
+  const lvls = [1, 2, 3, 4, 5]
+    .map((n) => `<a:lvl${n}pPr><a:defRPr sz="${sz}"/></a:lvl${n}pPr>`)
+    .join("");
   return xml.replace(/<p:sp>[\s\S]*?<\/p:sp>/g, (sp) => {
     if (!sp.includes('<p:ph type="body"')) return sp;
     return sp
+      .replace(/<a:lstStyle\s*\/>/, `<a:lstStyle>${lvls}</a:lstStyle>`)
       // 노트 슬라이드가 idx="1" 로 참조하므로 마스터도 맞춰 준다
       .replace(/(<p:ph type="body"[^>]*?)idx="\d+"/, '$1idx="1"')
       // 0.45" , 4.90"  /  6.60" x 8.10"  — 23.6 → 53.5 제곱인치
@@ -111,7 +117,7 @@ async function finalizeDeck(deckPath, { font, notesSize = 24 } = {}) {
       xml = xml.replace(/(<p:notesStyle>[\s\S]*?<\/p:notesStyle>)/, (block) =>
         block.replace(/<a:defRPr\b([^>]*?)\bsz="\d+"/g, (m, attrs) => `<a:defRPr${attrs}sz="${sz}"`)
       );
-      xml = growNotesMaster(xml);
+      xml = growNotesMaster(xml, sz);
     }
 
     // 3. 도형 ID 충돌
