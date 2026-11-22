@@ -4,7 +4,7 @@ const { LAYOUT, HEX } = require("../../theme");
 module.exports = function share(pres) {
   const C = pres.SchemeColor;
   const M = LAYOUT.MARGIN;
-  const s = pres.addSlide({ masterName: "SHARE", sectionTitle: "영광으로의 여정과 새계명" });
+  const s = pres.addSlide({ masterName: "SHARE", sectionTitle: "다락방 · 13장" });
 
   s.addText("소그룹 나눔", { placeholder: "kicker" });
   s.addText("지금 내가 씻어야 할 발", { placeholder: "title" });
