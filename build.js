@@ -22,6 +22,7 @@ const LESSONS = {
   "03": require("./src/lessons/lesson03"),
   "04": require("./src/lessons/lesson04"),
   "05": require("./src/lessons/lesson05"),
+  "06": require("./src/lessons/lesson06"),
 };
 
 /** 발표자 노트 글자 크기 (pt). 기본 28 — 슬라이드 노트 보기와 발표자 보기 기준.
